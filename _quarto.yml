@@ -2,21 +2,18 @@ project:
   type: website
   pre-render:
   - R/download_data.R  # download field data from Google Sheets
-  - example_batch/generate_batch_qmds.R  # generate the templated reports
   render:
   - index.qmd
-  - example_batch/batched_reports/*.qmd  # render templated reports
-  - example_batch/listing.qmd  # render the listing of reports
 
 website:
-  title: "QuartoBatch Example"
+  title: "Mangrove Structure in Placencia"
   navbar:
     left:
       - href: index.qmd
         text: Home
       - example_batch/listing.qmd
-      - href: https://github.com/7yl4r/quartobatch
-        text: Source Code on GitHub
+      - href: https://github.com/USF-IMaRS/mangrove-structure-in-placencia
+        text: Source Code
 format:
   html:
     theme: cosmo
