@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>quartobatch template – Mangrove Structure in Placencia</title>
+<title>Mangrove Structure in Placencia</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -68,6 +68,7 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
 
 
 <link rel="stylesheet" href="styles.css">
@@ -109,15 +110,21 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#lagoon-sectors" id="toc-lagoon-sectors" class="nav-link active" data-scroll-target="#lagoon-sectors">Lagoon sectors</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">quartobatch template</h1>
+<h1 class="title">Mangrove Structure in Placencia</h1>
 </div>
 
 
@@ -134,9 +141,19 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>This project uses <a href="https://github.com/7yl4r/quartobatch">quartobatch</a>.</p>
+<p>Field data are maintained in <a href="https://docs.google.com/spreadsheets/d/14LuCtodKnOIlNhZ7m3mE5Six7Qu6T-Sr/edit?usp=sharing">Placencia_mangroves_2025.xlsx</a> on Google Drive. A local copy is fetched automatically before each site build; you can also <a href="https://docs.google.com/spreadsheets/d/14LuCtodKnOIlNhZ7m3mE5Six7Qu6T-Sr/export?format=xlsx">download the spreadsheet directly</a>.</p>
+<section id="lagoon-sectors" class="level2">
+<h2 class="anchored" data-anchor-id="lagoon-sectors">Lagoon sectors</h2>
+<p>Click a region on the map to view its summary table. The three lagoon sectors are <strong>upper</strong>, <strong>lower</strong>, and <strong>main creek</strong>.</p>
+<div id="sector-map" data-root="data">
+
+</div>
+<div id="sector-table-panel">
+<p><em>Click a sector polygon to load its data table.</em></p>
+</div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -540,6 +557,9 @@ ul.task-list li input[type="checkbox"] {
   });
   </script>
 </div> <!-- /content -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js"></script>
+<script src="sector-map.js"></script>
 
 
 

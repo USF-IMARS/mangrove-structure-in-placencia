@@ -1,1 +1,35 @@
 /* css styles */
+
+#sector-map {
+  height: 480px;
+  width: 100%;
+  border: 1px solid #d0d0d0;
+  border-radius: 4px;
+  margin: 1rem 0;
+}
+
+#sector-table-panel {
+  margin: 1rem 0 2rem;
+  min-height: 4rem;
+}
+
+#sector-table-panel .sector-table-title {
+  margin-bottom: 0.75rem;
+}
+
+#sector-data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+#sector-data-table td,
+#sector-data-table th {
+  border: 1px solid #ddd;
+  padding: 0.45rem 0.65rem;
+  vertical-align: top;
+}
+
+#sector-data-table tr:nth-child(even) {
+  background: #f8f8f8;
+}

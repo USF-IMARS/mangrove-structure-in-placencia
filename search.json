@@ -2,8 +2,15 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "quartobatch template",
+    "title": "Mangrove Structure in Placencia",
     "section": "",
-    "text": "This project uses quartobatch."
+    "text": "Field data are maintained in Placencia_mangroves_2025.xlsx on Google Drive. A local copy is fetched automatically before each site build; you can also download the spreadsheet directly."
+  },
+  {
+    "objectID": "index.html#lagoon-sectors",
+    "href": "index.html#lagoon-sectors",
+    "title": "Mangrove Structure in Placencia",
+    "section": "Lagoon sectors",
+    "text": "Lagoon sectors\nClick a region on the map to view its summary table. The three lagoon sectors are upper, lower, and main creek.\n\n\n\n\nClick a sector polygon to load its data table."
   }
 ]
