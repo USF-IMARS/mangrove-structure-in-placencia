@@ -2,6 +2,13 @@ project:
   type: website
   pre-render:
   - R/download_data.R  # download field data from Google Sheets
+  - R/prepare_sector_map.R  # dissolve sector polygons for the web map
+  resources:
+  - data/placencia-sectors-map.geojson
+  - data/sector-tables/upper.xlsx
+  - data/sector-tables/lower.xlsx
+  - data/sector-tables/main-creek.xlsx
+  - sector-map.js
   render:
   - index.qmd
 
@@ -21,5 +28,13 @@ format:
     code-fold: true
     message: false
     warning: false
+    include-in-header:
+      - text: |
+          <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+    include-after-body:
+      - text: |
+          <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+          <script src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js"></script>
+          <script src="sector-map.js"></script>
 
 

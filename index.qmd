@@ -1,5 +1,17 @@
 ---
-title: "quartobatch template"
+title: "Mangrove Structure in Placencia"
 ---
 
-This project uses [quartobatch](https://github.com/7yl4r/quartobatch).
+Field data are maintained in [Placencia_mangroves_2025.xlsx](https://docs.google.com/spreadsheets/d/14LuCtodKnOIlNhZ7m3mE5Six7Qu6T-Sr/edit?usp=sharing) on Google Drive. A local copy is fetched automatically before each site build; you can also [download the spreadsheet directly](https://docs.google.com/spreadsheets/d/14LuCtodKnOIlNhZ7m3mE5Six7Qu6T-Sr/export?format=xlsx).
+
+## Lagoon sectors
+
+Click a region on the map to view its summary table. The three lagoon sectors are **upper**, **lower**, and **main creek**.
+
+::: {#sector-map data-root="data"}
+:::
+
+::: {#sector-table-panel}
+*Click a sector polygon to load its data table.*
+:::
+
