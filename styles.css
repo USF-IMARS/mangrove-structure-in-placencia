@@ -33,3 +33,17 @@
 #sector-data-table tr:nth-child(even) {
   background: #f8f8f8;
 }
+
+.footer-logos {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  padding: 0.5rem 0;
+}
+
+.footer-logos img {
+  max-height: 180px;
+  width: auto;
+}

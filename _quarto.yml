@@ -9,6 +9,8 @@ project:
   - data/sector-tables/lower.xlsx
   - data/sector-tables/main-creek.xlsx
   - sector-map.js
+  - static/img/scLogo.png
+  - "static/img/Marine Research Logo Design.png"
   render:
   - index.qmd
 
@@ -16,10 +18,14 @@ website:
   title: "Mangrove Structure in Placencia"
   navbar:
     left:
-      - href: index.qmd
-        text: Home
       - href: https://github.com/USF-IMaRS/mangrove-structure-in-placencia
         text: Source Code
+  page-footer:
+    center: |
+      <div class='footer-logos'>
+        <img src='/static/img/scLogo.png' alt='Strong Coasts logo'>
+        <img src='/static/img/Marine%20Research%20Logo%20Design.png' alt='USF Institute for Marine Remote Sensing'>
+      </div>
 format:
   html:
     theme: cosmo
