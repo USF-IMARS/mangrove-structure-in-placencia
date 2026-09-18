@@ -8,30 +8,53 @@
   margin: 1rem 0;
 }
 
-#sector-table-panel {
-  margin: 1rem 0 2rem;
-  min-height: 4rem;
+#sector-map-legend {
+  font-size: 0.85rem;
+  color: #666;
+  margin: -0.5rem 0 1rem;
 }
 
-#sector-table-panel .sector-table-title {
-  margin-bottom: 0.75rem;
+.sector-hint {
+  color: #666;
+  font-style: italic;
 }
 
-#sector-data-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.95rem;
+.sector-tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 0.75rem;
+  margin: 1rem 0 1.5rem;
 }
 
-#sector-data-table td,
-#sector-data-table th {
-  border: 1px solid #ddd;
-  padding: 0.45rem 0.65rem;
-  vertical-align: top;
-}
-
-#sector-data-table tr:nth-child(even) {
+.tile {
+  border: 1px solid #d0d0d0;
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
   background: #f8f8f8;
+}
+
+.tile-value {
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.tile-label {
+  font-size: 0.8rem;
+  color: #666;
+  margin-top: 0.15rem;
+}
+
+.chart-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.chart-row > * {
+  flex: 1 1 300px;
+  min-width: 0;
+  max-width: 100%;
 }
 
 .footer-logos {

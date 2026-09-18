@@ -2,17 +2,9 @@
 title: "Mangrove Structure in Placencia"
 ---
 
-Field data are maintained in [Placencia_mangroves_2025.xlsx](https://docs.google.com/spreadsheets/d/14LuCtodKnOIlNhZ7m3mE5Six7Qu6T-Sr/edit?usp=sharing) on Google Drive. A local copy is fetched automatically before each site build; you can also [download the spreadsheet directly](https://docs.google.com/spreadsheets/d/14LuCtodKnOIlNhZ7m3mE5Six7Qu6T-Sr/export?format=xlsx).
+Mangrove field sampling and satellite-derived coverage data is presented here along with documentation to help you build related analyses.
 
-## Lagoon sectors
+Field data are maintained in [Placencia_mangroves_2025.xlsx](https://docs.google.com/spreadsheets/d/14LuCtodKnOIlNhZ7m3mE5Six7Qu6T-Sr/edit?usp=sharing) on Google Drive.
+A local copy is fetched automatically before each site build; you can also [download the spreadsheet directly](https://docs.google.com/spreadsheets/d/14LuCtodKnOIlNhZ7m3mE5Six7Qu6T-Sr/export?format=xlsx).
 
-Click a region on the map to view its summary table. The three lagoon sectors are **upper**, **lower**, and **main creek**.
-
-::: {#sector-map data-root="data"}
-:::
-
-::: {#sector-table-panel}
-*Click a sector polygon to load its data table.*
-:::
-
- 
+Trees were sampled across three lagoon sectors — **upper**, **lower**, and **main creek** — plus a handful of offshore caye sites not yet shown on the map. Visit the [Sector Explorer](explorer.qmd) to click through each sector's species mix, trunk diameter (DBH) and height distributions, and underlying tree-level data.

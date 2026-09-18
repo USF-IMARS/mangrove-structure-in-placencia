@@ -1,0 +1,220 @@
+---
+title: "Sector Explorer"
+---
+
+Trees were sampled across three lagoon sectors — **upper**, **lower**, and **main creek** — plus a handful of offshore caye sites not yet shown on this map. Click a sector below to see its structure: species mix, trunk diameter (DBH) and height distributions, and the underlying tree-level data. To see biomass by individual field station instead, visit [Sampling Points](sampling-points.qmd).
+
+## Lagoon sectors
+
+```{ojs}
+//| echo: false
+trees = FileAttachment("data/dataset.json").json()
+sectorSummary = FileAttachment("data/sector-summary.json").json()
+speciesComposition = FileAttachment("data/species-composition.json").json()
+sectorsGeo = FileAttachment("data/placencia-sectors-map.geojson").json()
+```
+
+```{ojs}
+//| echo: false
+sectorLabels = ({upper: "Upper", lower: "Lower", "main creek": "Main Creek"})
+sectorColors = ({upper: "#2c7bb6", lower: "#d7191c", "main creek": "#1a9641"})
+```
+
+```{ojs}
+//| echo: false
+mutable selectedSector = null
+```
+
+```{ojs}
+//| echo: false
+// Defined (and displayed, as the live map container) in this same cell:
+// a separate cell that only *references* mapDiv would show a generic
+// object inspector instead of embedding the live DOM node.
+mapDiv = html`<div id="sector-map"></div>`
+```
+
+```{ojs}
+//| echo: false
+//| output: false
+L = require("leaflet@1.9.4")
+```
+
+```{ojs}
+//| echo: false
+//| output: false
+map = {
+  const m = L.map(mapDiv, { scrollWheelZoom: false }).setView([16.62, -88.34], 12);
+  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+    maxZoom: 19,
+  }).addTo(m);
+  return m;
+}
+```
+
+```{ojs}
+//| echo: false
+//| output: false
+// Sector polygon layer, built once. Hover state is tracked with a plain
+// closure variable (not a reactive `mutable`) so hovering never re-triggers
+// the layer rebuild — only clicks notify the rest of the page, via
+// `mutable selectedSector`.
+sectorGeoLayer = {
+  let activeRegion = null;
+
+  function baseStyle(region) {
+    return {
+      color: "#555",
+      fillColor: sectorColors[region] ?? "#ccc",
+      weight: 2,
+      fillOpacity: 0.45,
+    };
+  }
+
+  const layer = L.geoJSON(sectorsGeo, {
+    style: (f) => baseStyle(f.properties.region),
+    onEachFeature: (feature, lyr) => {
+      const region = feature.properties.region;
+      lyr.bindTooltip(sectorLabels[region] ?? region, { sticky: true, direction: "top" });
+      lyr.on({
+        mouseover: (e) => e.target.setStyle({ weight: 3, fillOpacity: 0.65 }),
+        mouseout: (e) => {
+          if (activeRegion !== region) e.target.setStyle(baseStyle(region));
+        },
+        click: (e) => {
+          activeRegion = region;
+          mutable selectedSector = region;
+        },
+      });
+    },
+  });
+  layer.addTo(map);
+  return layer;
+}
+```
+
+```{ojs}
+//| echo: false
+//| output: false
+// Reactive pass: re-applies the "selected" emphasis whenever selectedSector
+// changes, without rebuilding the layer.
+{
+  sectorGeoLayer.eachLayer((lyr) => {
+    const region = lyr.feature.properties.region;
+    const selected = region === selectedSector;
+    lyr.setStyle({
+      weight: selected ? 4 : 2,
+      fillOpacity: selected ? 0.75 : 0.45,
+    });
+  });
+}
+```
+
+```{ojs}
+//| echo: false
+selectedSummary = sectorSummary.find((d) => d.sector === selectedSector)
+```
+
+```{ojs}
+//| echo: false
+selectedSummary
+  ? html`<div class="sector-tiles">${[
+      ["Trees sampled", selectedSummary.n_trees],
+      ["Stations", selectedSummary.n_stations],
+      ["Species", selectedSummary.n_species],
+      ["Mean DBH", `${selectedSummary.mean_dbh_cm.toFixed(1)} cm`],
+      ["Mean height", `${selectedSummary.mean_height_m.toFixed(1)} m`],
+      ["Total biomass (sampled trees)", `${selectedSummary.total_biomass_kg.toFixed(0)} kg`],
+    ]
+      .map(
+        ([label, value]) =>
+          `<div class="tile"><div class="tile-value">${value}</div><div class="tile-label">${label}</div></div>`
+      )
+      .join("")}</div>`
+  : html`<p class="sector-hint">Click a sector on the map to see its summary, species mix, and tree-level data.</p>`
+```
+
+### Species composition
+
+```{ojs}
+//| echo: false
+sectorSpecies = speciesComposition.filter((d) => d.sector === selectedSector)
+```
+
+```{ojs}
+//| echo: false
+selectedSector == null
+  ? html`<p class="sector-hint">No sector selected yet.</p>`
+  : Plot.plot({
+      marginLeft: 160,
+      width: 640,
+      x: { label: "Trees sampled" },
+      y: { label: null },
+      marks: [
+        Plot.barX(sectorSpecies, {
+          x: "n_trees",
+          y: "species",
+          fill: sectorColors[selectedSector] ?? "#888",
+          sort: { y: "-x" },
+        }),
+      ],
+    })
+```
+
+### Structure: DBH & height distributions
+
+```{ojs}
+//| echo: false
+sectorTrees = trees.filter((d) => d.sector === selectedSector)
+```
+
+```{ojs}
+//| echo: false
+selectedSector == null
+  ? html`<p class="sector-hint">No sector selected yet.</p>`
+  : html`<div class="chart-row">${[
+      Plot.plot({
+        width: 340,
+        x: { label: "DBH (cm)" },
+        y: { label: "Trees" },
+        marks: [
+          Plot.rectY(
+            sectorTrees,
+            Plot.binX({ y: "count" }, { x: "dbh_cm", fill: sectorColors[selectedSector] ?? "#888" })
+          ),
+        ],
+      }),
+      Plot.plot({
+        width: 340,
+        x: { label: "Height (m)" },
+        y: { label: "Trees" },
+        marks: [
+          Plot.rectY(
+            sectorTrees,
+            Plot.binX({ y: "count" }, { x: "height_m", fill: sectorColors[selectedSector] ?? "#888" })
+          ),
+        ],
+      }),
+    ]}</div>`
+```
+
+### Tree-level data
+
+```{ojs}
+//| echo: false
+selectedSector == null
+  ? html`<p class="sector-hint">No sector selected yet.</p>`
+  : Inputs.table(sectorTrees, {
+      columns: ["species", "morphotype", "dbh_cm", "height_m", "total_biomass_kg"],
+      header: {
+        species: "Species",
+        morphotype: "Morphotype",
+        dbh_cm: "DBH (cm)",
+        height_m: "Height (m)",
+        total_biomass_kg: "Biomass (kg)",
+      },
+      sort: "dbh_cm",
+      reverse: true,
+      rows: 12,
+    })
+```

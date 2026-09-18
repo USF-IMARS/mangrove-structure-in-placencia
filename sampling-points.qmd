@@ -1,0 +1,82 @@
+---
+title: "Sampling Points"
+---
+
+Each bubble marks a field station where trees were measured. Bubble size scales with the total biomass measured at that station; color matches the station's lagoon sector (see the [Sector Explorer](explorer.qmd) for sector-level detail). Hover a bubble for its station id and totals.
+
+## Sampling points
+
+```{ojs}
+//| echo: false
+biomassPoints = FileAttachment("data/biomass-points.json").json()
+```
+
+```{ojs}
+//| echo: false
+sectorLabels = ({upper: "Upper", lower: "Lower", "main creek": "Main Creek"})
+sectorColors = ({upper: "#2c7bb6", lower: "#d7191c", "main creek": "#1a9641"})
+```
+
+```{ojs}
+//| echo: false
+// Defined (and displayed, as the live map container) in this same cell:
+// a separate cell that only *references* mapDiv would show a generic
+// object inspector instead of embedding the live DOM node.
+mapDiv = html`<div id="sector-map"></div>`
+```
+
+```{ojs}
+//| echo: false
+//| output: false
+L = require("leaflet@1.9.4")
+```
+
+```{ojs}
+//| echo: false
+//| output: false
+map = {
+  const m = L.map(mapDiv, { scrollWheelZoom: false }).setView([16.62, -88.34], 12);
+  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+    maxZoom: 19,
+  }).addTo(m);
+  return m;
+}
+```
+
+```{ojs}
+//| echo: false
+//| output: false
+// Manual sqrt scale (avoids a bare `d3` reference, which Quarto's OJS
+// runtime does not provide as an ambient global the way Observable
+// notebooks do — referencing it directly stalls the cell forever).
+maxBiomassPerPoint = Math.max(...biomassPoints.map((d) => d.total_biomass_kg))
+biomassRadius = (v) => 4 + 14 * Math.sqrt(v / maxBiomassPerPoint)
+```
+
+```{ojs}
+//| echo: false
+//| output: false
+pointsLayer = {
+  const layer = L.layerGroup(
+    biomassPoints.map((d) =>
+      L.circleMarker([d.lat, d.long], {
+        radius: biomassRadius(d.total_biomass_kg),
+        color: "#333",
+        weight: 1,
+        fillColor: sectorColors[d.sector] ?? "#888",
+        fillOpacity: 0.7,
+      }).bindTooltip(
+        `${sectorLabels[d.sector] ?? d.sector} station ${d.station_id}<br>
+         ${d.n_trees} trees sampled &middot; ${d.total_biomass_kg.toFixed(1)} kg total biomass`
+      )
+    )
+  );
+  layer.addTo(map);
+  return layer;
+}
+```
+
+:::{#sector-map-legend}
+Bubble size scales with total measured biomass at that station.
+:::
