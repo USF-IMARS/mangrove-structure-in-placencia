@@ -12,17 +12,31 @@ project:
   # cells and copies those paths to the output directory on its own.
   render:
   - index.qmd
+  - field-sampling.qmd
+  - satellite-mapping.qmd
   - explorer.qmd
   - sampling-points.qmd
+  - vignettes.qmd
+  - vignettes/*.qmd
 
 website:
   title: "Mangrove Structure in Placencia"
   navbar:
     left:
-      - href: explorer.qmd
-        text: Sector Explorer
-      - href: sampling-points.qmd
-        text: Sampling Points
+      - text: About the Data
+        menu:
+          - href: field-sampling.qmd
+            text: Field Sampling
+          - href: satellite-mapping.qmd
+            text: Satellite Mapping
+      - text: Data Visualizations
+        menu:
+          - href: explorer.qmd
+            text: Sector Explorer
+          - href: sampling-points.qmd
+            text: Sampling Points
+      - href: vignettes.qmd
+        text: Vignettes
       - href: https://github.com/USF-IMaRS/mangrove-structure-in-placencia
         text: Source Code
   page-footer:

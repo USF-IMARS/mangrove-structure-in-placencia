@@ -1,0 +1,21 @@
+---
+title: "Field Sampling"
+---
+
+The structural dataset behind this site (`Placencia_mangroves_2025.xlsx`) is collected by hand in the field, tree by tree, across the three lagoon sectors shown in the [Sector Explorer](explorer.qmd).
+
+## What's recorded per tree
+
+For each sampled tree, the dataset records:
+
+- **Location**: a station id and, for the first tree at each station, latitude/longitude.
+- **Species** and **morphotype** (fringe vs. scrub growth form).
+- **Trunk diameter (DBH)** and **height**.
+- **Lagoon position**: upper/lower/main creek sector, and east/west bank.
+- **Aboveground and belowground biomass per tree**, calculated from the measurements above.
+
+Trees are grouped by station, with a `quarternumber` and `dist` (distance) field indicating multiple trees measured outward from each station's reference point — consistent with a transect- or quadrant-based sampling design radiating from fixed field stations.
+
+## Methodology
+
+The specific field protocol (plot/transect layout, DBH measurement height, biomass allometric equations used, sampling dates, and personnel) is maintained by the field team and not yet written up here. **This section is a placeholder** — if you're on the field team, replace it with the actual methodology, or open an issue/PR against the [source repository](https://github.com/USF-IMaRS/mangrove-structure-in-placencia).

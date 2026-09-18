@@ -1,0 +1,10 @@
+---
+title: "Vignettes"
+listing:
+  contents: vignettes
+  type: default
+  sort: "date desc"
+  categories: false
+---
+
+Short, self-contained explorations of ideas in the data, contributed by researchers on the project — not full analyses, just a chart or two and a paragraph of interpretation. See the [template vignette](vignettes/example-exploration.qmd) for the expected format and how to add your own.

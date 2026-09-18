@@ -1,0 +1,16 @@
+---
+title: "Template: A Simple Exploration"
+author: "Researcher name"
+date: 2026-01-01
+description: "A template vignette — copy this file as a starting point for your own exploration."
+---
+
+This is a placeholder vignette showing the expected shape of an entry in the [Vignettes](../vignettes.qmd) listing: a short, self-contained exploration of one idea, question, or pattern in the data — not a full analysis or paper.
+
+To add your own vignette:
+
+1. Copy this file to a new name in `vignettes/` (e.g. `vignettes/dbh-vs-height.qmd`).
+2. Update the `title`, `author`, `date`, and `description` in the front matter above — these are what show up in the listing.
+3. Replace this text with your own write-up. You can pull the underlying data from `data/dataset.json`, `data/sector-summary.json`, `data/species-composition.json`, or `data/biomass-points.json` (see the [Sector Explorer](../explorer.qmd) source for examples of reading them with `{ojs}`), or from `data/Placencia_mangroves_2025.xlsx` directly in R or Python.
+
+Keep it simple — a chart or two with a paragraph of interpretation is plenty.

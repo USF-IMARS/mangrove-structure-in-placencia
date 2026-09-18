@@ -1,0 +1,13 @@
+---
+title: "Satellite Mapping"
+---
+
+The lagoon sector boundaries shown on this site's maps — **upper**, **lower**, and **main creek** — come from a mangrove extent polygon layer maintained separately from the field structural data, reflecting this project's connection to the [USF Institute for Marine Remote Sensing (IMaRS)](https://imars.usf.edu/).
+
+## From extent polygons to the site's map
+
+The source layer (`data/placencia-sectors.geojson`) contains 1,115 small mangrove-extent polygons, each tagged with a `region`. Before each site build, `R/prepare_sector_map.R` dissolves those polygons into the three named sectors and reprojects them from UTM zone 16N to WGS84 for the web map (`data/placencia-sectors-map.geojson`).
+
+## Methodology
+
+How the source extent polygons themselves were produced — imagery source, classification or digitization method, and validation — is maintained by the remote sensing team and not yet written up here. **This section is a placeholder** — if you're on the remote sensing team, replace it with the actual methodology, or open an issue/PR against the [source repository](https://github.com/USF-IMaRS/mangrove-structure-in-placencia).
