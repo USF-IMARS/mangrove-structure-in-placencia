@@ -2,7 +2,11 @@
 title: "Field Sampling"
 ---
 
-The structural dataset behind this site (`Placencia_mangroves_2025.xlsx`) is collected by hand in the field, tree by tree, across the three lagoon sectors shown in the [Sector Explorer](explorer.qmd).
+The structural dataset behind this site (`Placencia_mangroves_2025.xlsx`) is collected by hand in the field, tree by tree, across three lagoon sectors — **upper**, **lower**, and **main creek** — plus a handful of offshore caye sites not yet shown on the [Sector Explorer](explorer.qmd) map.
+
+## Data source
+
+Field data are maintained in [Placencia_mangroves_2025.xlsx](https://docs.google.com/spreadsheets/d/14LuCtodKnOIlNhZ7m3mE5Six7Qu6T-Sr/edit?usp=sharing) on Google Drive. A local copy is fetched automatically before each site build; you can also [download the spreadsheet directly](https://docs.google.com/spreadsheets/d/14LuCtodKnOIlNhZ7m3mE5Six7Qu6T-Sr/export?format=xlsx).
 
 ## What's recorded per tree
 

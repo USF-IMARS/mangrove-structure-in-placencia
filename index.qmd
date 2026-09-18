@@ -4,7 +4,9 @@ title: "Mangrove Structure in Placencia"
 
 Mangrove field sampling and satellite-derived coverage data is presented here along with documentation to help you build related analyses.
 
-Field data are maintained in [Placencia_mangroves_2025.xlsx](https://docs.google.com/spreadsheets/d/14LuCtodKnOIlNhZ7m3mE5Six7Qu6T-Sr/edit?usp=sharing) on Google Drive.
-A local copy is fetched automatically before each site build; you can also [download the spreadsheet directly](https://docs.google.com/spreadsheets/d/14LuCtodKnOIlNhZ7m3mE5Six7Qu6T-Sr/export?format=xlsx).
+## Where to start
 
-Trees were sampled across three lagoon sectors — **upper**, **lower**, and **main creek** — plus a handful of offshore caye sites not yet shown on the map. Visit the [Sector Explorer](explorer.qmd) to click through each sector's species mix, trunk diameter (DBH) and height distributions, and underlying tree-level data.
+- **[Sector Explorer](explorer.qmd)** — start here. Click a lagoon sector on the map to see its species mix, trunk diameter (DBH) and height distributions, and underlying tree-level data.
+- [Sampling Points](sampling-points.qmd) — a station-by-station view of total biomass sampled in the field.
+- [Field Sampling](field-sampling.qmd) and [Satellite Mapping](satellite-mapping.qmd) — background on how the field and mapping data were collected.
+- [Vignettes](vignettes.qmd) — short, researcher-contributed explorations of the data.
