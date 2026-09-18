@@ -121,7 +121,6 @@ selectedSummary
   ? html`<div class="sector-tiles">${[
       ["Trees sampled", selectedSummary.n_trees],
       ["Stations", selectedSummary.n_stations],
-      ["Species", selectedSummary.n_species],
       ["Mean DBH", `${selectedSummary.mean_dbh_cm.toFixed(1)} cm`],
       ["Mean height", `${selectedSummary.mean_height_m.toFixed(1)} m`],
       ["Total biomass (sampled trees)", `${selectedSummary.total_biomass_kg.toFixed(0)} kg`],
