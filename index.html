@@ -91,6 +91,40 @@ ul.task-list li input[type="checkbox"] {
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-about-the-data" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">About the Data</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-about-the-data">    
+        <li>
+    <a class="dropdown-item" href="./field-sampling.html">
+ <span class="dropdown-text">Field Sampling</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./satellite-mapping.html">
+ <span class="dropdown-text">Satellite Mapping</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-data-visualizations" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Data Visualizations</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-data-visualizations">    
+        <li>
+    <a class="dropdown-item" href="./explorer.html">
+ <span class="dropdown-text">Sector Explorer</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./sampling-points.html">
+ <span class="dropdown-text">Sampling Points</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="./vignettes.html"> 
+<span class="menu-text">Vignettes</span></a>
+  </li>  
   <li class="nav-item">
     <a class="nav-link" href="https://github.com/USF-IMaRS/mangrove-structure-in-placencia"> 
 <span class="menu-text">Source Code</span></a>
@@ -111,7 +145,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#lagoon-sectors" id="toc-lagoon-sectors" class="nav-link active" data-scroll-target="#lagoon-sectors">Lagoon sectors</a></li>
+  <li><a href="#where-to-start" id="toc-where-to-start" class="nav-link active" data-scroll-target="#where-to-start">Where to start</a></li>
   </ul>
 </nav>
     </div>
@@ -137,16 +171,15 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Field data are maintained in <a href="https://docs.google.com/spreadsheets/d/14LuCtodKnOIlNhZ7m3mE5Six7Qu6T-Sr/edit?usp=sharing">Placencia_mangroves_2025.xlsx</a> on Google Drive. A local copy is fetched automatically before each site build; you can also <a href="https://docs.google.com/spreadsheets/d/14LuCtodKnOIlNhZ7m3mE5Six7Qu6T-Sr/export?format=xlsx">download the spreadsheet directly</a>.</p>
-<section id="lagoon-sectors" class="level2">
-<h2 class="anchored" data-anchor-id="lagoon-sectors">Lagoon sectors</h2>
-<p>Click a region on the map to view its summary table. The three lagoon sectors are <strong>upper</strong>, <strong>lower</strong>, and <strong>main creek</strong>.</p>
-<div id="sector-map" data-root="data">
-
-</div>
-<div id="sector-table-panel">
-<p><em>Click a sector polygon to load its data table.</em></p>
-</div>
+<p>Mangrove field sampling and satellite-derived coverage data is presented here along with documentation to help you build related analyses.</p>
+<section id="where-to-start" class="level2">
+<h2 class="anchored" data-anchor-id="where-to-start">Where to start</h2>
+<ul>
+<li><strong><a href="./explorer.html">Sector Explorer</a></strong> — start here. Click a lagoon sector on the map to see its species mix, trunk diameter (DBH) and height distributions, and underlying tree-level data.</li>
+<li><a href="./sampling-points.html">Sampling Points</a> — a station-by-station view of total biomass sampled in the field.</li>
+<li><a href="./field-sampling.html">Field Sampling</a> and <a href="./satellite-mapping.html">Satellite Mapping</a> — background on how the field and mapping data were collected.</li>
+<li><a href="./vignettes.html">Vignettes</a> — short, researcher-contributed explorations of the data.</li>
+</ul>
 
 
 </section>
@@ -568,9 +601,6 @@ ul.task-list li input[type="checkbox"] {
     </div>
   </div>
 </footer>
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-<script src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js"></script>
-<script src="sector-map.js"></script>
 
 
 

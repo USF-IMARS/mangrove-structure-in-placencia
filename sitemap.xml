@@ -1,7 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://USF-IMARS.github.io/mangrove-structure-in-placencia/vignettes/example-exploration.html</loc>
+    <lastmod>2026-09-18T17:50:57.182Z</lastmod>
+  </url>
+  <url>
+    <loc>https://USF-IMARS.github.io/mangrove-structure-in-placencia/sampling-points.html</loc>
+    <lastmod>2026-09-17T18:22:26.384Z</lastmod>
+  </url>
+  <url>
+    <loc>https://USF-IMARS.github.io/mangrove-structure-in-placencia/satellite-mapping.html</loc>
+    <lastmod>2026-09-18T17:50:50.027Z</lastmod>
+  </url>
+  <url>
     <loc>https://USF-IMARS.github.io/mangrove-structure-in-placencia/index.html</loc>
-    <lastmod>2026-06-11T17:56:32.007Z</lastmod>
+    <lastmod>2026-09-18T17:59:34.310Z</lastmod>
+  </url>
+  <url>
+    <loc>https://USF-IMARS.github.io/mangrove-structure-in-placencia/field-sampling.html</loc>
+    <lastmod>2026-09-18T17:59:28.961Z</lastmod>
+  </url>
+  <url>
+    <loc>https://USF-IMARS.github.io/mangrove-structure-in-placencia/explorer.html</loc>
+    <lastmod>2026-09-18T18:02:39.173Z</lastmod>
+  </url>
+  <url>
+    <loc>https://USF-IMARS.github.io/mangrove-structure-in-placencia/vignettes.html</loc>
+    <lastmod>2026-09-18T17:51:00.894Z</lastmod>
   </url>
 </urlset>

@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.27">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Sector Explorer – Mangrove Structure in Placencia</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-fed2927b5d71da76dad1d9df0395c5a2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script type="module" src="site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
+<link href="site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Mangrove Structure in Placencia</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-about-the-data" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">About the Data</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-about-the-data">    
+        <li>
+    <a class="dropdown-item" href="./field-sampling.html">
+ <span class="dropdown-text">Field Sampling</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./satellite-mapping.html">
+ <span class="dropdown-text">Satellite Mapping</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-data-visualizations" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Data Visualizations</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-data-visualizations">    
+        <li>
+    <a class="dropdown-item" href="./explorer.html">
+ <span class="dropdown-text">Sector Explorer</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./sampling-points.html">
+ <span class="dropdown-text">Sampling Points</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="./vignettes.html"> 
+<span class="menu-text">Vignettes</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://github.com/USF-IMaRS/mangrove-structure-in-placencia"> 
+<span class="menu-text">Source Code</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#lagoon-sectors" id="toc-lagoon-sectors" class="nav-link active" data-scroll-target="#lagoon-sectors">Lagoon sectors</a>
+  <ul class="collapse">
+  <li><a href="#species-composition" id="toc-species-composition" class="nav-link" data-scroll-target="#species-composition">Species composition</a></li>
+  <li><a href="#structure-dbh-height-distributions" id="toc-structure-dbh-height-distributions" class="nav-link" data-scroll-target="#structure-dbh-height-distributions">Structure: DBH &amp; height distributions</a></li>
+  <li><a href="#tree-level-data" id="toc-tree-level-data" class="nav-link" data-scroll-target="#tree-level-data">Tree-level data</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Sector Explorer</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Trees were sampled across three lagoon sectors — <strong>upper</strong>, <strong>lower</strong>, and <strong>main creek</strong> — plus a handful of offshore caye sites not yet shown on this map. Click a sector below to see its structure: species mix, trunk diameter (DBH) and height distributions, and the underlying tree-level data. To see biomass by individual field station instead, visit <a href="./sampling-points.html">Sampling Points</a>.</p>
+<section id="lagoon-sectors" class="level2">
+<h2 class="anchored" data-anchor-id="lagoon-sectors">Lagoon sectors</h2>
+<div class="cell">
+<details class="code-fold hidden">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb1" data-startfrom="11" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 10;"><span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>trees <span class="op">=</span> <span class="fu">FileAttachment</span>(<span class="st">"data/dataset.json"</span>)<span class="op">.</span><span class="fu">json</span>()</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>sectorSummary <span class="op">=</span> <span class="fu">FileAttachment</span>(<span class="st">"data/sector-summary.json"</span>)<span class="op">.</span><span class="fu">json</span>()</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>speciesComposition <span class="op">=</span> <span class="fu">FileAttachment</span>(<span class="st">"data/species-composition.json"</span>)<span class="op">.</span><span class="fu">json</span>()</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>sectorsGeo <span class="op">=</span> <span class="fu">FileAttachment</span>(<span class="st">"data/placencia-sectors-map.geojson"</span>)<span class="op">.</span><span class="fu">json</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-4" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+<div class="cell">
+<details class="code-fold hidden">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb2" data-startfrom="19" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 18;"><span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>sectorLabels <span class="op">=</span> ({<span class="dt">upper</span><span class="op">:</span> <span class="st">"Upper"</span><span class="op">,</span> <span class="dt">lower</span><span class="op">:</span> <span class="st">"Lower"</span><span class="op">,</span> <span class="st">"main creek"</span><span class="op">:</span> <span class="st">"Main Creek"</span>})</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>sectorColors <span class="op">=</span> ({<span class="dt">upper</span><span class="op">:</span> <span class="st">"#2c7bb6"</span><span class="op">,</span> <span class="dt">lower</span><span class="op">:</span> <span class="st">"#d7191c"</span><span class="op">,</span> <span class="st">"main creek"</span><span class="op">:</span> <span class="st">"#1a9641"</span>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+<div class="cell">
+<details class="code-fold hidden">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb3" data-startfrom="24" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 23;"><span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>mutable selectedSector <span class="op">=</span> <span class="kw">null</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<details class="code-fold hidden">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb4" data-startfrom="29" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 28;"><span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a><span class="co">// Defined (and displayed, as the live map container) in this same cell:</span></span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a><span class="co">// a separate cell that only *references* mapDiv would show a generic</span></span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a><span class="co">// object inspector instead of embedding the live DOM node.</span></span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>mapDiv <span class="op">=</span> <span class="fu">html</span><span class="vs">`&lt;div id="sector-map"&gt;&lt;/div&gt;`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-4" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell hidden">
+<details class="code-fold hidden">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb5" data-startfrom="38" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 37;"><span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>L <span class="op">=</span> <span class="pp">require</span>(<span class="st">"leaflet@1.9.4"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display hidden">
+<div id="ojs-cell-5" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell hidden">
+<details class="code-fold hidden">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb6" data-startfrom="44" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 43;"><span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a>map <span class="op">=</span> {</span>
+<span id="cb6-45"><a href="#cb6-45" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> m <span class="op">=</span> L<span class="op">.</span><span class="fu">map</span>(mapDiv<span class="op">,</span> { <span class="dt">scrollWheelZoom</span><span class="op">:</span> <span class="kw">false</span> })<span class="op">.</span><span class="fu">setView</span>([<span class="fl">16.62</span><span class="op">,</span> <span class="op">-</span><span class="fl">88.34</span>]<span class="op">,</span> <span class="dv">12</span>)<span class="op">;</span></span>
+<span id="cb6-46"><a href="#cb6-46" aria-hidden="true" tabindex="-1"></a>  L<span class="op">.</span><span class="fu">tileLayer</span>(<span class="st">"https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"</span><span class="op">,</span> {</span>
+<span id="cb6-47"><a href="#cb6-47" aria-hidden="true" tabindex="-1"></a>    <span class="dt">attribution</span><span class="op">:</span> <span class="st">'&amp;copy; &lt;a href="https://www.openstreetmap.org/copyright"&gt;OpenStreetMap&lt;/a&gt;'</span><span class="op">,</span></span>
+<span id="cb6-48"><a href="#cb6-48" aria-hidden="true" tabindex="-1"></a>    <span class="dt">maxZoom</span><span class="op">:</span> <span class="dv">19</span><span class="op">,</span></span>
+<span id="cb6-49"><a href="#cb6-49" aria-hidden="true" tabindex="-1"></a>  })<span class="op">.</span><span class="fu">addTo</span>(m)<span class="op">;</span></span>
+<span id="cb6-50"><a href="#cb6-50" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> m<span class="op">;</span></span>
+<span id="cb6-51"><a href="#cb6-51" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display hidden">
+<div id="ojs-cell-6" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell hidden">
+<details class="code-fold hidden">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb7" data-startfrom="57" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 56;"><span id="cb7-57"><a href="#cb7-57" aria-hidden="true" tabindex="-1"></a><span class="co">// Sector polygon layer, built once. Hover state is tracked with a plain</span></span>
+<span id="cb7-58"><a href="#cb7-58" aria-hidden="true" tabindex="-1"></a><span class="co">// closure variable (not a reactive `mutable`) so hovering never re-triggers</span></span>
+<span id="cb7-59"><a href="#cb7-59" aria-hidden="true" tabindex="-1"></a><span class="co">// the layer rebuild — only clicks notify the rest of the page, via</span></span>
+<span id="cb7-60"><a href="#cb7-60" aria-hidden="true" tabindex="-1"></a><span class="co">// `mutable selectedSector`.</span></span>
+<span id="cb7-61"><a href="#cb7-61" aria-hidden="true" tabindex="-1"></a>sectorGeoLayer <span class="op">=</span> {</span>
+<span id="cb7-62"><a href="#cb7-62" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> activeRegion <span class="op">=</span> <span class="kw">null</span><span class="op">;</span></span>
+<span id="cb7-63"><a href="#cb7-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-64"><a href="#cb7-64" aria-hidden="true" tabindex="-1"></a>  <span class="kw">function</span> <span class="fu">baseStyle</span>(region) {</span>
+<span id="cb7-65"><a href="#cb7-65" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> {</span>
+<span id="cb7-66"><a href="#cb7-66" aria-hidden="true" tabindex="-1"></a>      <span class="dt">color</span><span class="op">:</span> <span class="st">"#555"</span><span class="op">,</span></span>
+<span id="cb7-67"><a href="#cb7-67" aria-hidden="true" tabindex="-1"></a>      <span class="dt">fillColor</span><span class="op">:</span> sectorColors[region] <span class="op">??</span> <span class="st">"#ccc"</span><span class="op">,</span></span>
+<span id="cb7-68"><a href="#cb7-68" aria-hidden="true" tabindex="-1"></a>      <span class="dt">weight</span><span class="op">:</span> <span class="dv">2</span><span class="op">,</span></span>
+<span id="cb7-69"><a href="#cb7-69" aria-hidden="true" tabindex="-1"></a>      <span class="dt">fillOpacity</span><span class="op">:</span> <span class="fl">0.45</span><span class="op">,</span></span>
+<span id="cb7-70"><a href="#cb7-70" aria-hidden="true" tabindex="-1"></a>    }<span class="op">;</span></span>
+<span id="cb7-71"><a href="#cb7-71" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb7-72"><a href="#cb7-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-73"><a href="#cb7-73" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> layer <span class="op">=</span> L<span class="op">.</span><span class="fu">geoJSON</span>(sectorsGeo<span class="op">,</span> {</span>
+<span id="cb7-74"><a href="#cb7-74" aria-hidden="true" tabindex="-1"></a>    <span class="dt">style</span><span class="op">:</span> (f) <span class="kw">=&gt;</span> <span class="fu">baseStyle</span>(f<span class="op">.</span><span class="at">properties</span><span class="op">.</span><span class="at">region</span>)<span class="op">,</span></span>
+<span id="cb7-75"><a href="#cb7-75" aria-hidden="true" tabindex="-1"></a>    <span class="dt">onEachFeature</span><span class="op">:</span> (feature<span class="op">,</span> lyr) <span class="kw">=&gt;</span> {</span>
+<span id="cb7-76"><a href="#cb7-76" aria-hidden="true" tabindex="-1"></a>      <span class="kw">const</span> region <span class="op">=</span> feature<span class="op">.</span><span class="at">properties</span><span class="op">.</span><span class="at">region</span><span class="op">;</span></span>
+<span id="cb7-77"><a href="#cb7-77" aria-hidden="true" tabindex="-1"></a>      lyr<span class="op">.</span><span class="fu">bindTooltip</span>(sectorLabels[region] <span class="op">??</span> region<span class="op">,</span> { <span class="dt">sticky</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span> <span class="dt">direction</span><span class="op">:</span> <span class="st">"top"</span> })<span class="op">;</span></span>
+<span id="cb7-78"><a href="#cb7-78" aria-hidden="true" tabindex="-1"></a>      lyr<span class="op">.</span><span class="fu">on</span>({</span>
+<span id="cb7-79"><a href="#cb7-79" aria-hidden="true" tabindex="-1"></a>        <span class="dt">mouseover</span><span class="op">:</span> (e) <span class="kw">=&gt;</span> e<span class="op">.</span><span class="at">target</span><span class="op">.</span><span class="fu">setStyle</span>({ <span class="dt">weight</span><span class="op">:</span> <span class="dv">3</span><span class="op">,</span> <span class="dt">fillOpacity</span><span class="op">:</span> <span class="fl">0.65</span> })<span class="op">,</span></span>
+<span id="cb7-80"><a href="#cb7-80" aria-hidden="true" tabindex="-1"></a>        <span class="dt">mouseout</span><span class="op">:</span> (e) <span class="kw">=&gt;</span> {</span>
+<span id="cb7-81"><a href="#cb7-81" aria-hidden="true" tabindex="-1"></a>          <span class="cf">if</span> (activeRegion <span class="op">!==</span> region) e<span class="op">.</span><span class="at">target</span><span class="op">.</span><span class="fu">setStyle</span>(<span class="fu">baseStyle</span>(region))<span class="op">;</span></span>
+<span id="cb7-82"><a href="#cb7-82" aria-hidden="true" tabindex="-1"></a>        }<span class="op">,</span></span>
+<span id="cb7-83"><a href="#cb7-83" aria-hidden="true" tabindex="-1"></a>        <span class="dt">click</span><span class="op">:</span> (e) <span class="kw">=&gt;</span> {</span>
+<span id="cb7-84"><a href="#cb7-84" aria-hidden="true" tabindex="-1"></a>          activeRegion <span class="op">=</span> region<span class="op">;</span></span>
+<span id="cb7-85"><a href="#cb7-85" aria-hidden="true" tabindex="-1"></a>          mutable selectedSector <span class="op">=</span> region<span class="op">;</span></span>
+<span id="cb7-86"><a href="#cb7-86" aria-hidden="true" tabindex="-1"></a>        }<span class="op">,</span></span>
+<span id="cb7-87"><a href="#cb7-87" aria-hidden="true" tabindex="-1"></a>      })<span class="op">;</span></span>
+<span id="cb7-88"><a href="#cb7-88" aria-hidden="true" tabindex="-1"></a>    }<span class="op">,</span></span>
+<span id="cb7-89"><a href="#cb7-89" aria-hidden="true" tabindex="-1"></a>  })<span class="op">;</span></span>
+<span id="cb7-90"><a href="#cb7-90" aria-hidden="true" tabindex="-1"></a>  layer<span class="op">.</span><span class="fu">addTo</span>(map)<span class="op">;</span></span>
+<span id="cb7-91"><a href="#cb7-91" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> layer<span class="op">;</span></span>
+<span id="cb7-92"><a href="#cb7-92" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display hidden">
+<div id="ojs-cell-7" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell hidden">
+<details class="code-fold hidden">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb8" data-startfrom="98" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 97;"><span id="cb8-98"><a href="#cb8-98" aria-hidden="true" tabindex="-1"></a><span class="co">// Reactive pass: re-applies the "selected" emphasis whenever selectedSector</span></span>
+<span id="cb8-99"><a href="#cb8-99" aria-hidden="true" tabindex="-1"></a><span class="co">// changes, without rebuilding the layer.</span></span>
+<span id="cb8-100"><a href="#cb8-100" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb8-101"><a href="#cb8-101" aria-hidden="true" tabindex="-1"></a>  sectorGeoLayer<span class="op">.</span><span class="fu">eachLayer</span>((lyr) <span class="kw">=&gt;</span> {</span>
+<span id="cb8-102"><a href="#cb8-102" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> region <span class="op">=</span> lyr<span class="op">.</span><span class="at">feature</span><span class="op">.</span><span class="at">properties</span><span class="op">.</span><span class="at">region</span><span class="op">;</span></span>
+<span id="cb8-103"><a href="#cb8-103" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> selected <span class="op">=</span> region <span class="op">===</span> selectedSector<span class="op">;</span></span>
+<span id="cb8-104"><a href="#cb8-104" aria-hidden="true" tabindex="-1"></a>    lyr<span class="op">.</span><span class="fu">setStyle</span>({</span>
+<span id="cb8-105"><a href="#cb8-105" aria-hidden="true" tabindex="-1"></a>      <span class="dt">weight</span><span class="op">:</span> selected <span class="op">?</span> <span class="dv">4</span> <span class="op">:</span> <span class="dv">2</span><span class="op">,</span></span>
+<span id="cb8-106"><a href="#cb8-106" aria-hidden="true" tabindex="-1"></a>      <span class="dt">fillOpacity</span><span class="op">:</span> selected <span class="op">?</span> <span class="fl">0.75</span> <span class="op">:</span> <span class="fl">0.45</span><span class="op">,</span></span>
+<span id="cb8-107"><a href="#cb8-107" aria-hidden="true" tabindex="-1"></a>    })<span class="op">;</span></span>
+<span id="cb8-108"><a href="#cb8-108" aria-hidden="true" tabindex="-1"></a>  })<span class="op">;</span></span>
+<span id="cb8-109"><a href="#cb8-109" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display hidden">
+<div id="ojs-cell-8" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<details class="code-fold hidden">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb9" data-startfrom="114" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 113;"><span id="cb9-114"><a href="#cb9-114" aria-hidden="true" tabindex="-1"></a>selectedSummary <span class="op">=</span> sectorSummary<span class="op">.</span><span class="fu">find</span>((d) <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">sector</span> <span class="op">===</span> selectedSector)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-9" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<details class="code-fold hidden">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb10" data-startfrom="119" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 118;"><span id="cb10-119"><a href="#cb10-119" aria-hidden="true" tabindex="-1"></a>selectedSummary</span>
+<span id="cb10-120"><a href="#cb10-120" aria-hidden="true" tabindex="-1"></a>  <span class="op">?</span> <span class="fu">html</span><span class="vs">`&lt;div class="sector-tiles"&gt;</span><span class="sc">${</span>[</span>
+<span id="cb10-121"><a href="#cb10-121" aria-hidden="true" tabindex="-1"></a>      [<span class="st">"Trees sampled"</span><span class="op">,</span> selectedSummary<span class="op">.</span><span class="at">n_trees</span>]<span class="op">,</span></span>
+<span id="cb10-122"><a href="#cb10-122" aria-hidden="true" tabindex="-1"></a>      [<span class="st">"Stations"</span><span class="op">,</span> selectedSummary<span class="op">.</span><span class="at">n_stations</span>]<span class="op">,</span></span>
+<span id="cb10-123"><a href="#cb10-123" aria-hidden="true" tabindex="-1"></a>      [<span class="st">"Mean DBH"</span><span class="op">,</span> <span class="vs">`</span><span class="sc">${</span>selectedSummary<span class="op">.</span><span class="at">mean_dbh_cm</span><span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">1</span>)<span class="sc">}</span><span class="vs"> cm`</span>]<span class="op">,</span></span>
+<span id="cb10-124"><a href="#cb10-124" aria-hidden="true" tabindex="-1"></a>      [<span class="st">"Mean height"</span><span class="op">,</span> <span class="vs">`</span><span class="sc">${</span>selectedSummary<span class="op">.</span><span class="at">mean_height_m</span><span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">1</span>)<span class="sc">}</span><span class="vs"> m`</span>]<span class="op">,</span></span>
+<span id="cb10-125"><a href="#cb10-125" aria-hidden="true" tabindex="-1"></a>      [<span class="st">"Total biomass (sampled trees)"</span><span class="op">,</span> <span class="vs">`</span><span class="sc">${</span>selectedSummary<span class="op">.</span><span class="at">total_biomass_kg</span><span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">0</span>)<span class="sc">}</span><span class="vs"> kg`</span>]<span class="op">,</span></span>
+<span id="cb10-126"><a href="#cb10-126" aria-hidden="true" tabindex="-1"></a>    ]</span>
+<span id="cb10-127"><a href="#cb10-127" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span><span class="fu">map</span>(</span>
+<span id="cb10-128"><a href="#cb10-128" aria-hidden="true" tabindex="-1"></a>        ([label<span class="op">,</span> value]) <span class="kw">=&gt;</span></span>
+<span id="cb10-129"><a href="#cb10-129" aria-hidden="true" tabindex="-1"></a>          <span class="vs">`&lt;div class="tile"&gt;&lt;div class="tile-value"&gt;</span><span class="sc">${</span>value<span class="sc">}</span><span class="vs">&lt;/div&gt;&lt;div class="tile-label"&gt;</span><span class="sc">${</span>label<span class="sc">}</span><span class="vs">&lt;/div&gt;&lt;/div&gt;`</span></span>
+<span id="cb10-130"><a href="#cb10-130" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb10-131"><a href="#cb10-131" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span><span class="fu">join</span>(<span class="st">""</span>)<span class="sc">}</span><span class="vs">&lt;/div&gt;`</span></span>
+<span id="cb10-132"><a href="#cb10-132" aria-hidden="true" tabindex="-1"></a>  <span class="op">:</span> <span class="fu">html</span><span class="vs">`&lt;p class="sector-hint"&gt;Click a sector on the map to see its summary, species mix, and tree-level data.&lt;/p&gt;`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-10" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+<section id="species-composition" class="level3">
+<h3 class="anchored" data-anchor-id="species-composition">Species composition</h3>
+<div class="cell">
+<details class="code-fold hidden">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb11" data-startfrom="139" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 138;"><span id="cb11-139"><a href="#cb11-139" aria-hidden="true" tabindex="-1"></a>sectorSpecies <span class="op">=</span> speciesComposition<span class="op">.</span><span class="fu">filter</span>((d) <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">sector</span> <span class="op">===</span> selectedSector)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-11" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<details class="code-fold hidden">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb12" data-startfrom="144" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 143;"><span id="cb12-144"><a href="#cb12-144" aria-hidden="true" tabindex="-1"></a>selectedSector <span class="op">==</span> <span class="kw">null</span></span>
+<span id="cb12-145"><a href="#cb12-145" aria-hidden="true" tabindex="-1"></a>  <span class="op">?</span> <span class="fu">html</span><span class="vs">`&lt;p class="sector-hint"&gt;No sector selected yet.&lt;/p&gt;`</span></span>
+<span id="cb12-146"><a href="#cb12-146" aria-hidden="true" tabindex="-1"></a>  <span class="op">:</span> Plot<span class="op">.</span><span class="fu">plot</span>({</span>
+<span id="cb12-147"><a href="#cb12-147" aria-hidden="true" tabindex="-1"></a>      <span class="dt">marginLeft</span><span class="op">:</span> <span class="dv">160</span><span class="op">,</span></span>
+<span id="cb12-148"><a href="#cb12-148" aria-hidden="true" tabindex="-1"></a>      <span class="dt">width</span><span class="op">:</span> <span class="dv">640</span><span class="op">,</span></span>
+<span id="cb12-149"><a href="#cb12-149" aria-hidden="true" tabindex="-1"></a>      <span class="dt">x</span><span class="op">:</span> { <span class="dt">label</span><span class="op">:</span> <span class="st">"Trees sampled"</span> }<span class="op">,</span></span>
+<span id="cb12-150"><a href="#cb12-150" aria-hidden="true" tabindex="-1"></a>      <span class="dt">y</span><span class="op">:</span> { <span class="dt">label</span><span class="op">:</span> <span class="kw">null</span> }<span class="op">,</span></span>
+<span id="cb12-151"><a href="#cb12-151" aria-hidden="true" tabindex="-1"></a>      <span class="dt">marks</span><span class="op">:</span> [</span>
+<span id="cb12-152"><a href="#cb12-152" aria-hidden="true" tabindex="-1"></a>        Plot<span class="op">.</span><span class="fu">barX</span>(sectorSpecies<span class="op">,</span> {</span>
+<span id="cb12-153"><a href="#cb12-153" aria-hidden="true" tabindex="-1"></a>          <span class="dt">x</span><span class="op">:</span> <span class="st">"n_trees"</span><span class="op">,</span></span>
+<span id="cb12-154"><a href="#cb12-154" aria-hidden="true" tabindex="-1"></a>          <span class="dt">y</span><span class="op">:</span> <span class="st">"species"</span><span class="op">,</span></span>
+<span id="cb12-155"><a href="#cb12-155" aria-hidden="true" tabindex="-1"></a>          <span class="dt">fill</span><span class="op">:</span> sectorColors[selectedSector] <span class="op">??</span> <span class="st">"#888"</span><span class="op">,</span></span>
+<span id="cb12-156"><a href="#cb12-156" aria-hidden="true" tabindex="-1"></a>          <span class="dt">sort</span><span class="op">:</span> { <span class="dt">y</span><span class="op">:</span> <span class="st">"-x"</span> }<span class="op">,</span></span>
+<span id="cb12-157"><a href="#cb12-157" aria-hidden="true" tabindex="-1"></a>        })<span class="op">,</span></span>
+<span id="cb12-158"><a href="#cb12-158" aria-hidden="true" tabindex="-1"></a>      ]<span class="op">,</span></span>
+<span id="cb12-159"><a href="#cb12-159" aria-hidden="true" tabindex="-1"></a>    })</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-12" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+</section>
+<section id="structure-dbh-height-distributions" class="level3">
+<h3 class="anchored" data-anchor-id="structure-dbh-height-distributions">Structure: DBH &amp; height distributions</h3>
+<div class="cell">
+<details class="code-fold hidden">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb13" data-startfrom="166" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 165;"><span id="cb13-166"><a href="#cb13-166" aria-hidden="true" tabindex="-1"></a>sectorTrees <span class="op">=</span> trees<span class="op">.</span><span class="fu">filter</span>((d) <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">sector</span> <span class="op">===</span> selectedSector)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-13" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<details class="code-fold hidden">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb14" data-startfrom="171" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 170;"><span id="cb14-171"><a href="#cb14-171" aria-hidden="true" tabindex="-1"></a>selectedSector <span class="op">==</span> <span class="kw">null</span></span>
+<span id="cb14-172"><a href="#cb14-172" aria-hidden="true" tabindex="-1"></a>  <span class="op">?</span> <span class="fu">html</span><span class="vs">`&lt;p class="sector-hint"&gt;No sector selected yet.&lt;/p&gt;`</span></span>
+<span id="cb14-173"><a href="#cb14-173" aria-hidden="true" tabindex="-1"></a>  <span class="op">:</span> <span class="fu">html</span><span class="vs">`&lt;div class="chart-row"&gt;</span><span class="sc">${</span>[</span>
+<span id="cb14-174"><a href="#cb14-174" aria-hidden="true" tabindex="-1"></a>      Plot<span class="op">.</span><span class="fu">plot</span>({</span>
+<span id="cb14-175"><a href="#cb14-175" aria-hidden="true" tabindex="-1"></a>        <span class="dt">width</span><span class="op">:</span> <span class="dv">340</span><span class="op">,</span></span>
+<span id="cb14-176"><a href="#cb14-176" aria-hidden="true" tabindex="-1"></a>        <span class="dt">x</span><span class="op">:</span> { <span class="dt">label</span><span class="op">:</span> <span class="st">"DBH (cm)"</span> }<span class="op">,</span></span>
+<span id="cb14-177"><a href="#cb14-177" aria-hidden="true" tabindex="-1"></a>        <span class="dt">y</span><span class="op">:</span> { <span class="dt">label</span><span class="op">:</span> <span class="st">"Trees"</span> }<span class="op">,</span></span>
+<span id="cb14-178"><a href="#cb14-178" aria-hidden="true" tabindex="-1"></a>        <span class="dt">marks</span><span class="op">:</span> [</span>
+<span id="cb14-179"><a href="#cb14-179" aria-hidden="true" tabindex="-1"></a>          Plot<span class="op">.</span><span class="fu">rectY</span>(</span>
+<span id="cb14-180"><a href="#cb14-180" aria-hidden="true" tabindex="-1"></a>            sectorTrees<span class="op">,</span></span>
+<span id="cb14-181"><a href="#cb14-181" aria-hidden="true" tabindex="-1"></a>            Plot<span class="op">.</span><span class="fu">binX</span>({ <span class="dt">y</span><span class="op">:</span> <span class="st">"count"</span> }<span class="op">,</span> { <span class="dt">x</span><span class="op">:</span> <span class="st">"dbh_cm"</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> sectorColors[selectedSector] <span class="op">??</span> <span class="st">"#888"</span> })</span>
+<span id="cb14-182"><a href="#cb14-182" aria-hidden="true" tabindex="-1"></a>          )<span class="op">,</span></span>
+<span id="cb14-183"><a href="#cb14-183" aria-hidden="true" tabindex="-1"></a>        ]<span class="op">,</span></span>
+<span id="cb14-184"><a href="#cb14-184" aria-hidden="true" tabindex="-1"></a>      })<span class="op">,</span></span>
+<span id="cb14-185"><a href="#cb14-185" aria-hidden="true" tabindex="-1"></a>      Plot<span class="op">.</span><span class="fu">plot</span>({</span>
+<span id="cb14-186"><a href="#cb14-186" aria-hidden="true" tabindex="-1"></a>        <span class="dt">width</span><span class="op">:</span> <span class="dv">340</span><span class="op">,</span></span>
+<span id="cb14-187"><a href="#cb14-187" aria-hidden="true" tabindex="-1"></a>        <span class="dt">x</span><span class="op">:</span> { <span class="dt">label</span><span class="op">:</span> <span class="st">"Height (m)"</span> }<span class="op">,</span></span>
+<span id="cb14-188"><a href="#cb14-188" aria-hidden="true" tabindex="-1"></a>        <span class="dt">y</span><span class="op">:</span> { <span class="dt">label</span><span class="op">:</span> <span class="st">"Trees"</span> }<span class="op">,</span></span>
+<span id="cb14-189"><a href="#cb14-189" aria-hidden="true" tabindex="-1"></a>        <span class="dt">marks</span><span class="op">:</span> [</span>
+<span id="cb14-190"><a href="#cb14-190" aria-hidden="true" tabindex="-1"></a>          Plot<span class="op">.</span><span class="fu">rectY</span>(</span>
+<span id="cb14-191"><a href="#cb14-191" aria-hidden="true" tabindex="-1"></a>            sectorTrees<span class="op">,</span></span>
+<span id="cb14-192"><a href="#cb14-192" aria-hidden="true" tabindex="-1"></a>            Plot<span class="op">.</span><span class="fu">binX</span>({ <span class="dt">y</span><span class="op">:</span> <span class="st">"count"</span> }<span class="op">,</span> { <span class="dt">x</span><span class="op">:</span> <span class="st">"height_m"</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> sectorColors[selectedSector] <span class="op">??</span> <span class="st">"#888"</span> })</span>
+<span id="cb14-193"><a href="#cb14-193" aria-hidden="true" tabindex="-1"></a>          )<span class="op">,</span></span>
+<span id="cb14-194"><a href="#cb14-194" aria-hidden="true" tabindex="-1"></a>        ]<span class="op">,</span></span>
+<span id="cb14-195"><a href="#cb14-195" aria-hidden="true" tabindex="-1"></a>      })<span class="op">,</span></span>
+<span id="cb14-196"><a href="#cb14-196" aria-hidden="true" tabindex="-1"></a>    ]<span class="sc">}</span><span class="vs">&lt;/div&gt;`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-14" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+</section>
+<section id="tree-level-data" class="level3">
+<h3 class="anchored" data-anchor-id="tree-level-data">Tree-level data</h3>
+<div class="cell">
+<details class="code-fold hidden">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb15" data-startfrom="203" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 202;"><span id="cb15-203"><a href="#cb15-203" aria-hidden="true" tabindex="-1"></a>selectedSector <span class="op">==</span> <span class="kw">null</span></span>
+<span id="cb15-204"><a href="#cb15-204" aria-hidden="true" tabindex="-1"></a>  <span class="op">?</span> <span class="fu">html</span><span class="vs">`&lt;p class="sector-hint"&gt;No sector selected yet.&lt;/p&gt;`</span></span>
+<span id="cb15-205"><a href="#cb15-205" aria-hidden="true" tabindex="-1"></a>  <span class="op">:</span> Inputs<span class="op">.</span><span class="fu">table</span>(sectorTrees<span class="op">,</span> {</span>
+<span id="cb15-206"><a href="#cb15-206" aria-hidden="true" tabindex="-1"></a>      <span class="dt">columns</span><span class="op">:</span> [<span class="st">"species"</span><span class="op">,</span> <span class="st">"morphotype"</span><span class="op">,</span> <span class="st">"dbh_cm"</span><span class="op">,</span> <span class="st">"height_m"</span><span class="op">,</span> <span class="st">"total_biomass_kg"</span>]<span class="op">,</span></span>
+<span id="cb15-207"><a href="#cb15-207" aria-hidden="true" tabindex="-1"></a>      <span class="dt">header</span><span class="op">:</span> {</span>
+<span id="cb15-208"><a href="#cb15-208" aria-hidden="true" tabindex="-1"></a>        <span class="dt">species</span><span class="op">:</span> <span class="st">"Species"</span><span class="op">,</span></span>
+<span id="cb15-209"><a href="#cb15-209" aria-hidden="true" tabindex="-1"></a>        <span class="dt">morphotype</span><span class="op">:</span> <span class="st">"Morphotype"</span><span class="op">,</span></span>
+<span id="cb15-210"><a href="#cb15-210" aria-hidden="true" tabindex="-1"></a>        <span class="dt">dbh_cm</span><span class="op">:</span> <span class="st">"DBH (cm)"</span><span class="op">,</span></span>
+<span id="cb15-211"><a href="#cb15-211" aria-hidden="true" tabindex="-1"></a>        <span class="dt">height_m</span><span class="op">:</span> <span class="st">"Height (m)"</span><span class="op">,</span></span>
+<span id="cb15-212"><a href="#cb15-212" aria-hidden="true" tabindex="-1"></a>        <span class="dt">total_biomass_kg</span><span class="op">:</span> <span class="st">"Biomass (kg)"</span><span class="op">,</span></span>
+<span id="cb15-213"><a href="#cb15-213" aria-hidden="true" tabindex="-1"></a>      }<span class="op">,</span></span>
+<span id="cb15-214"><a href="#cb15-214" aria-hidden="true" tabindex="-1"></a>      <span class="dt">sort</span><span class="op">:</span> <span class="st">"dbh_cm"</span><span class="op">,</span></span>
+<span id="cb15-215"><a href="#cb15-215" aria-hidden="true" tabindex="-1"></a>      <span class="dt">reverse</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span></span>
+<span id="cb15-216"><a href="#cb15-216" aria-hidden="true" tabindex="-1"></a>      <span class="dt">rows</span><span class="op">:</span> <span class="dv">12</span><span class="op">,</span></span>
+<span id="cb15-217"><a href="#cb15-217" aria-hidden="true" tabindex="-1"></a>    })</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-15" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script type="ojs-module-contents">
+eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InRyZWVzID0gRmlsZUF0dGFjaG1lbnQoXCJkYXRhL2RhdGFzZXQuanNvblwiKS5qc29uKClcbnNlY3RvclN1bW1hcnkgPSBGaWxlQXR0YWNobWVudChcImRhdGEvc2VjdG9yLXN1bW1hcnkuanNvblwiKS5qc29uKClcbnNwZWNpZXNDb21wb3NpdGlvbiA9IEZpbGVBdHRhY2htZW50KFwiZGF0YS9zcGVjaWVzLWNvbXBvc2l0aW9uLmpzb25cIikuanNvbigpXG5zZWN0b3JzR2VvID0gRmlsZUF0dGFjaG1lbnQoXCJkYXRhL3BsYWNlbmNpYS1zZWN0b3JzLW1hcC5nZW9qc29uXCIpLmpzb24oKVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0yIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoic2VjdG9yTGFiZWxzID0gKHt1cHBlcjogXCJVcHBlclwiLCBsb3dlcjogXCJMb3dlclwiLCBcIm1haW4gY3JlZWtcIjogXCJNYWluIENyZWVrXCJ9KVxuc2VjdG9yQ29sb3JzID0gKHt1cHBlcjogXCIjMmM3YmI2XCIsIGxvd2VyOiBcIiNkNzE5MWNcIiwgXCJtYWluIGNyZWVrXCI6IFwiIzFhOTY0MVwifSlcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMyIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6Im11dGFibGUgc2VsZWN0ZWRTZWN0b3IgPSBudWxsXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTQiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiIvLyBEZWZpbmVkIChhbmQgZGlzcGxheWVkLCBhcyB0aGUgbGl2ZSBtYXAgY29udGFpbmVyKSBpbiB0aGlzIHNhbWUgY2VsbDpcbi8vIGEgc2VwYXJhdGUgY2VsbCB0aGF0IG9ubHkgKnJlZmVyZW5jZXMqIG1hcERpdiB3b3VsZCBzaG93IGEgZ2VuZXJpY1xuLy8gb2JqZWN0IGluc3BlY3RvciBpbnN0ZWFkIG9mIGVtYmVkZGluZyB0aGUgbGl2ZSBET00gbm9kZS5cbm1hcERpdiA9IGh0bWxgPGRpdiBpZD1cInNlY3Rvci1tYXBcIj48L2Rpdj5gXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTUiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJMID0gcmVxdWlyZShcImxlYWZsZXRAMS45LjRcIilcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtNiIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6Im1hcCA9IHtcbiAgY29uc3QgbSA9IEwubWFwKG1hcERpdiwgeyBzY3JvbGxXaGVlbFpvb206IGZhbHNlIH0pLnNldFZpZXcoWzE2LjYyLCAtODguMzRdLCAxMik7XG4gIEwudGlsZUxheWVyKFwiaHR0cHM6Ly97c30udGlsZS5vcGVuc3RyZWV0bWFwLm9yZy97en0ve3h9L3t5fS5wbmdcIiwge1xuICAgIGF0dHJpYnV0aW9uOiAnJmNvcHk7IDxhIGhyZWY9XCJodHRwczovL3d3dy5vcGVuc3RyZWV0bWFwLm9yZy9jb3B5cmlnaHRcIj5PcGVuU3RyZWV0TWFwPC9hPicsXG4gICAgbWF4Wm9vbTogMTksXG4gIH0pLmFkZFRvKG0pO1xuICByZXR1cm4gbTtcbn1cbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtNyIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6Ii8vIFNlY3RvciBwb2x5Z29uIGxheWVyLCBidWlsdCBvbmNlLiBIb3ZlciBzdGF0ZSBpcyB0cmFja2VkIHdpdGggYSBwbGFpblxuLy8gY2xvc3VyZSB2YXJpYWJsZSAobm90IGEgcmVhY3RpdmUgYG11dGFibGVgKSBzbyBob3ZlcmluZyBuZXZlciByZS10cmlnZ2Vyc1xuLy8gdGhlIGxheWVyIHJlYnVpbGQg4oCUIG9ubHkgY2xpY2tzIG5vdGlmeSB0aGUgcmVzdCBvZiB0aGUgcGFnZSwgdmlhXG4vLyBgbXV0YWJsZSBzZWxlY3RlZFNlY3RvcmAuXG5zZWN0b3JHZW9MYXllciA9IHtcbiAgbGV0IGFjdGl2ZVJlZ2lvbiA9IG51bGw7XG5cbiAgZnVuY3Rpb24gYmFzZVN0eWxlKHJlZ2lvbikge1xuICAgIHJldHVybiB7XG4gICAgICBjb2xvcjogXCIjNTU1XCIsXG4gICAgICBmaWxsQ29sb3I6IHNlY3RvckNvbG9yc1tyZWdpb25dID8/IFwiI2NjY1wiLFxuICAgICAgd2VpZ2h0OiAyLFxuICAgICAgZmlsbE9wYWNpdHk6IDAuNDUsXG4gICAgfTtcbiAgfVxuXG4gIGNvbnN0IGxheWVyID0gTC5nZW9KU09OKHNlY3RvcnNHZW8sIHtcbiAgICBzdHlsZTogKGYpID0+IGJhc2VTdHlsZShmLnByb3BlcnRpZXMucmVnaW9uKSxcbiAgICBvbkVhY2hGZWF0dXJlOiAoZmVhdHVyZSwgbHlyKSA9PiB7XG4gICAgICBjb25zdCByZWdpb24gPSBmZWF0dXJlLnByb3BlcnRpZXMucmVnaW9uO1xuICAgICAgbHlyLmJpbmRUb29sdGlwKHNlY3RvckxhYmVsc1tyZWdpb25dID8/IHJlZ2lvbiwgeyBzdGlja3k6IHRydWUsIGRpcmVjdGlvbjogXCJ0b3BcIiB9KTtcbiAgICAgIGx5ci5vbih7XG4gICAgICAgIG1vdXNlb3ZlcjogKGUpID0+IGUudGFyZ2V0LnNldFN0eWxlKHsgd2VpZ2h0OiAzLCBmaWxsT3BhY2l0eTogMC42NSB9KSxcbiAgICAgICAgbW91c2VvdXQ6IChlKSA9PiB7XG4gICAgICAgICAgaWYgKGFjdGl2ZVJlZ2lvbiAhPT0gcmVnaW9uKSBlLnRhcmdldC5zZXRTdHlsZShiYXNlU3R5bGUocmVnaW9uKSk7XG4gICAgICAgIH0sXG4gICAgICAgIGNsaWNrOiAoZSkgPT4ge1xuICAgICAgICAgIGFjdGl2ZVJlZ2lvbiA9IHJlZ2lvbjtcbiAgICAgICAgICBtdXRhYmxlIHNlbGVjdGVkU2VjdG9yID0gcmVnaW9uO1xuICAgICAgICB9LFxuICAgICAgfSk7XG4gICAgfSxcbiAgfSk7XG4gIGxheWVyLmFkZFRvKG1hcCk7XG4gIHJldHVybiBsYXllcjtcbn1cbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtOCIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6Ii8vIFJlYWN0aXZlIHBhc3M6IHJlLWFwcGxpZXMgdGhlIFwic2VsZWN0ZWRcIiBlbXBoYXNpcyB3aGVuZXZlciBzZWxlY3RlZFNlY3RvclxuLy8gY2hhbmdlcywgd2l0aG91dCByZWJ1aWxkaW5nIHRoZSBsYXllci5cbntcbiAgc2VjdG9yR2VvTGF5ZXIuZWFjaExheWVyKChseXIpID0+IHtcbiAgICBjb25zdCByZWdpb24gPSBseXIuZmVhdHVyZS5wcm9wZXJ0aWVzLnJlZ2lvbjtcbiAgICBjb25zdCBzZWxlY3RlZCA9IHJlZ2lvbiA9PT0gc2VsZWN0ZWRTZWN0b3I7XG4gICAgbHlyLnNldFN0eWxlKHtcbiAgICAgIHdlaWdodDogc2VsZWN0ZWQgPyA0IDogMixcbiAgICAgIGZpbGxPcGFjaXR5OiBzZWxlY3RlZCA/IDAuNzUgOiAwLjQ1LFxuICAgIH0pO1xuICB9KTtcbn1cbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtOSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InNlbGVjdGVkU3VtbWFyeSA9IHNlY3RvclN1bW1hcnkuZmluZCgoZCkgPT4gZC5zZWN0b3IgPT09IHNlbGVjdGVkU2VjdG9yKVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0xMCIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InNlbGVjdGVkU3VtbWFyeVxuICA/IGh0bWxgPGRpdiBjbGFzcz1cInNlY3Rvci10aWxlc1wiPiR7W1xuICAgICAgW1wiVHJlZXMgc2FtcGxlZFwiLCBzZWxlY3RlZFN1bW1hcnkubl90cmVlc10sXG4gICAgICBbXCJTdGF0aW9uc1wiLCBzZWxlY3RlZFN1bW1hcnkubl9zdGF0aW9uc10sXG4gICAgICBbXCJNZWFuIERCSFwiLCBgJHtzZWxlY3RlZFN1bW1hcnkubWVhbl9kYmhfY20udG9GaXhlZCgxKX0gY21gXSxcbiAgICAgIFtcIk1lYW4gaGVpZ2h0XCIsIGAke3NlbGVjdGVkU3VtbWFyeS5tZWFuX2hlaWdodF9tLnRvRml4ZWQoMSl9IG1gXSxcbiAgICAgIFtcIlRvdGFsIGJpb21hc3MgKHNhbXBsZWQgdHJlZXMpXCIsIGAke3NlbGVjdGVkU3VtbWFyeS50b3RhbF9iaW9tYXNzX2tnLnRvRml4ZWQoMCl9IGtnYF0sXG4gICAgXVxuICAgICAgLm1hcChcbiAgICAgICAgKFtsYWJlbCwgdmFsdWVdKSA9PlxuICAgICAgICAgIGA8ZGl2IGNsYXNzPVwidGlsZVwiPjxkaXYgY2xhc3M9XCJ0aWxlLXZhbHVlXCI+JHt2YWx1ZX08L2Rpdj48ZGl2IGNsYXNzPVwidGlsZS1sYWJlbFwiPiR7bGFiZWx9PC9kaXY+PC9kaXY+YFxuICAgICAgKVxuICAgICAgLmpvaW4oXCJcIil9PC9kaXY+YFxuICA6IGh0bWxgPHAgY2xhc3M9XCJzZWN0b3ItaGludFwiPkNsaWNrIGEgc2VjdG9yIG9uIHRoZSBtYXAgdG8gc2VlIGl0cyBzdW1tYXJ5LCBzcGVjaWVzIG1peCwgYW5kIHRyZWUtbGV2ZWwgZGF0YS48L3A+YFxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0xMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InNlY3RvclNwZWNpZXMgPSBzcGVjaWVzQ29tcG9zaXRpb24uZmlsdGVyKChkKSA9PiBkLnNlY3RvciA9PT0gc2VsZWN0ZWRTZWN0b3IpXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTEyIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoic2VsZWN0ZWRTZWN0b3IgPT0gbnVsbFxuICA/IGh0bWxgPHAgY2xhc3M9XCJzZWN0b3ItaGludFwiPk5vIHNlY3RvciBzZWxlY3RlZCB5ZXQuPC9wPmBcbiAgOiBQbG90LnBsb3Qoe1xuICAgICAgbWFyZ2luTGVmdDogMTYwLFxuICAgICAgd2lkdGg6IDY0MCxcbiAgICAgIHg6IHsgbGFiZWw6IFwiVHJlZXMgc2FtcGxlZFwiIH0sXG4gICAgICB5OiB7IGxhYmVsOiBudWxsIH0sXG4gICAgICBtYXJrczogW1xuICAgICAgICBQbG90LmJhclgoc2VjdG9yU3BlY2llcywge1xuICAgICAgICAgIHg6IFwibl90cmVlc1wiLFxuICAgICAgICAgIHk6IFwic3BlY2llc1wiLFxuICAgICAgICAgIGZpbGw6IHNlY3RvckNvbG9yc1tzZWxlY3RlZFNlY3Rvcl0gPz8gXCIjODg4XCIsXG4gICAgICAgICAgc29ydDogeyB5OiBcIi14XCIgfSxcbiAgICAgICAgfSksXG4gICAgICBdLFxuICAgIH0pXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTEzIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoic2VjdG9yVHJlZXMgPSB0cmVlcy5maWx0ZXIoKGQpID0+IGQuc2VjdG9yID09PSBzZWxlY3RlZFNlY3RvcilcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMTQiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJzZWxlY3RlZFNlY3RvciA9PSBudWxsXG4gID8gaHRtbGA8cCBjbGFzcz1cInNlY3Rvci1oaW50XCI+Tm8gc2VjdG9yIHNlbGVjdGVkIHlldC48L3A+YFxuICA6IGh0bWxgPGRpdiBjbGFzcz1cImNoYXJ0LXJvd1wiPiR7W1xuICAgICAgUGxvdC5wbG90KHtcbiAgICAgICAgd2lkdGg6IDM0MCxcbiAgICAgICAgeDogeyBsYWJlbDogXCJEQkggKGNtKVwiIH0sXG4gICAgICAgIHk6IHsgbGFiZWw6IFwiVHJlZXNcIiB9LFxuICAgICAgICBtYXJrczogW1xuICAgICAgICAgIFBsb3QucmVjdFkoXG4gICAgICAgICAgICBzZWN0b3JUcmVlcyxcbiAgICAgICAgICAgIFBsb3QuYmluWCh7IHk6IFwiY291bnRcIiB9LCB7IHg6IFwiZGJoX2NtXCIsIGZpbGw6IHNlY3RvckNvbG9yc1tzZWxlY3RlZFNlY3Rvcl0gPz8gXCIjODg4XCIgfSlcbiAgICAgICAgICApLFxuICAgICAgICBdLFxuICAgICAgfSksXG4gICAgICBQbG90LnBsb3Qoe1xuICAgICAgICB3aWR0aDogMzQwLFxuICAgICAgICB4OiB7IGxhYmVsOiBcIkhlaWdodCAobSlcIiB9LFxuICAgICAgICB5OiB7IGxhYmVsOiBcIlRyZWVzXCIgfSxcbiAgICAgICAgbWFya3M6IFtcbiAgICAgICAgICBQbG90LnJlY3RZKFxuICAgICAgICAgICAgc2VjdG9yVHJlZXMsXG4gICAgICAgICAgICBQbG90LmJpblgoeyB5OiBcImNvdW50XCIgfSwgeyB4OiBcImhlaWdodF9tXCIsIGZpbGw6IHNlY3RvckNvbG9yc1tzZWxlY3RlZFNlY3Rvcl0gPz8gXCIjODg4XCIgfSlcbiAgICAgICAgICApLFxuICAgICAgICBdLFxuICAgICAgfSksXG4gICAgXX08L2Rpdj5gXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTE1IiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoic2VsZWN0ZWRTZWN0b3IgPT0gbnVsbFxuICA/IGh0bWxgPHAgY2xhc3M9XCJzZWN0b3ItaGludFwiPk5vIHNlY3RvciBzZWxlY3RlZCB5ZXQuPC9wPmBcbiAgOiBJbnB1dHMudGFibGUoc2VjdG9yVHJlZXMsIHtcbiAgICAgIGNvbHVtbnM6IFtcInNwZWNpZXNcIiwgXCJtb3JwaG90eXBlXCIsIFwiZGJoX2NtXCIsIFwiaGVpZ2h0X21cIiwgXCJ0b3RhbF9iaW9tYXNzX2tnXCJdLFxuICAgICAgaGVhZGVyOiB7XG4gICAgICAgIHNwZWNpZXM6IFwiU3BlY2llc1wiLFxuICAgICAgICBtb3JwaG90eXBlOiBcIk1vcnBob3R5cGVcIixcbiAgICAgICAgZGJoX2NtOiBcIkRCSCAoY20pXCIsXG4gICAgICAgIGhlaWdodF9tOiBcIkhlaWdodCAobSlcIixcbiAgICAgICAgdG90YWxfYmlvbWFzc19rZzogXCJCaW9tYXNzIChrZylcIixcbiAgICAgIH0sXG4gICAgICBzb3J0OiBcImRiaF9jbVwiLFxuICAgICAgcmV2ZXJzZTogdHJ1ZSxcbiAgICAgIHJvd3M6IDEyLFxuICAgIH0pXG4ifV19
+</script>
+<script type="module">
+if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
+window._ojs.paths.runtimeToDoc = "../..";
+window._ojs.paths.runtimeToRoot = "../..";
+window._ojs.paths.docToRoot = "";
+window._ojs.selfContained = false;
+window._ojs.runtime.interpretFromScriptTags();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/USF-IMARS\.github\.io\/mangrove-structure-in-placencia\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<div class="footer-logos">
+<p><img src="./static/img/scLogo.png" alt="Strong Coasts logo"> <img src="./static/img/Marine Research Logo Design.png" alt="USF Institute for Marine Remote Sensing"></p>
+</div>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

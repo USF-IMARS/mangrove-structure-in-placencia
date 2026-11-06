@@ -1,16 +1,107 @@
 [
   {
+    "objectID": "vignettes/example-exploration.html",
+    "href": "vignettes/example-exploration.html",
+    "title": "Template: A Simple Exploration",
+    "section": "",
+    "text": "This is a placeholder vignette showing the expected shape of an entry in the Vignettes listing: a short, self-contained exploration of one idea, question, or pattern in the data — not a full analysis or paper.\nTo add your own vignette:\n\nCopy this file to a new name in vignettes/ (e.g. vignettes/dbh-vs-height.qmd).\nUpdate the title, author, date, and description in the front matter above — these are what show up in the listing.\nReplace this text with your own write-up. You can pull the underlying data from data/dataset.json, data/sector-summary.json, data/species-composition.json, or data/biomass-points.json (see the Sector Explorer source for examples of reading them with {ojs}), or from data/Placencia_mangroves_2025.xlsx directly in R or Python.\n\nKeep it simple — a chart or two with a paragraph of interpretation is plenty."
+  },
+  {
+    "objectID": "sampling-points.html",
+    "href": "sampling-points.html",
+    "title": "Sampling Points",
+    "section": "",
+    "text": "Each bubble marks a field station where trees were measured. Bubble size scales with the total biomass measured at that station; color matches the station’s lagoon sector (see the Sector Explorer for sector-level detail). Hover a bubble for its station id and totals."
+  },
+  {
+    "objectID": "sampling-points.html#sampling-points",
+    "href": "sampling-points.html#sampling-points",
+    "title": "Sampling Points",
+    "section": "Sampling points",
+    "text": "Sampling points\n\n\nCode\nbiomassPoints = FileAttachment(\"data/biomass-points.json\").json()\n\n\n\n\n\n\n\n\n\nCode\nsectorLabels = ({upper: \"Upper\", lower: \"Lower\", \"main creek\": \"Main Creek\"})\nsectorColors = ({upper: \"#2c7bb6\", lower: \"#d7191c\", \"main creek\": \"#1a9641\"})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCode\n// Defined (and displayed, as the live map container) in this same cell:\n// a separate cell that only *references* mapDiv would show a generic\n// object inspector instead of embedding the live DOM node.\nmapDiv = html`&lt;div id=\"sector-map\"&gt;&lt;/div&gt;`\n\n\n\n\n\n\n\n\n\nCode\nL = require(\"leaflet@1.9.4\")\n\n\n\n\n\n\n\n\n\nCode\nmap = {\n  const m = L.map(mapDiv, { scrollWheelZoom: false }).setView([16.62, -88.34], 12);\n  L.tileLayer(\"https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png\", {\n    attribution: '&copy; &lt;a href=\"https://www.openstreetmap.org/copyright\"&gt;OpenStreetMap&lt;/a&gt;',\n    maxZoom: 19,\n  }).addTo(m);\n  return m;\n}\n\n\n\n\n\n\n\n\n\nCode\nmaxBiomassPerPoint = Math.max(...biomassPoints.map((d) =&gt; d.total_biomass_kg))\nbiomassRadius = (v) =&gt; 4 + 14 * Math.sqrt(v / maxBiomassPerPoint)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCode\npointsLayer = {\n  const layer = L.layerGroup(\n    biomassPoints.map((d) =&gt;\n      L.circleMarker([d.lat, d.long], {\n        radius: biomassRadius(d.total_biomass_kg),\n        color: \"#333\",\n        weight: 1,\n        fillColor: sectorColors[d.sector] ?? \"#888\",\n        fillOpacity: 0.7,\n      }).bindTooltip(\n        `${sectorLabels[d.sector] ?? d.sector} station ${d.station_id}&lt;br&gt;\n         ${d.n_trees} trees sampled &middot; ${d.total_biomass_kg.toFixed(1)} kg total biomass`\n      )\n    )\n  );\n  layer.addTo(map);\n  return layer;\n}\n\n\n\n\n\n\n\n\nBubble size scales with total measured biomass at that station."
+  },
+  {
+    "objectID": "satellite-mapping.html",
+    "href": "satellite-mapping.html",
+    "title": "Satellite Mapping",
+    "section": "",
+    "text": "The lagoon sector boundaries shown on this site’s maps — upper, lower, and main creek — come from a mangrove extent polygon layer maintained separately from the field structural data, reflecting this project’s connection to the USF Institute for Marine Remote Sensing (IMaRS)."
+  },
+  {
+    "objectID": "satellite-mapping.html#from-extent-polygons-to-the-sites-map",
+    "href": "satellite-mapping.html#from-extent-polygons-to-the-sites-map",
+    "title": "Satellite Mapping",
+    "section": "From extent polygons to the site’s map",
+    "text": "From extent polygons to the site’s map\nThe source layer (data/placencia-sectors.geojson) contains 1,115 small mangrove-extent polygons, each tagged with a region. Before each site build, R/prepare_sector_map.R dissolves those polygons into the three named sectors and reprojects them from UTM zone 16N to WGS84 for the web map (data/placencia-sectors-map.geojson)."
+  },
+  {
+    "objectID": "satellite-mapping.html#methodology",
+    "href": "satellite-mapping.html#methodology",
+    "title": "Satellite Mapping",
+    "section": "Methodology",
+    "text": "Methodology\nHow the source extent polygons themselves were produced — imagery source, classification or digitization method, and validation — is maintained by the remote sensing team and not yet written up here. This section is a placeholder — if you’re on the remote sensing team, replace it with the actual methodology, or open an issue/PR against the source repository."
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Mangrove Structure in Placencia",
     "section": "",
-    "text": "Field data are maintained in Placencia_mangroves_2025.xlsx on Google Drive. A local copy is fetched automatically before each site build; you can also download the spreadsheet directly."
+    "text": "Mangrove field sampling and satellite-derived coverage data is presented here along with documentation to help you build related analyses."
   },
   {
-    "objectID": "index.html#lagoon-sectors",
-    "href": "index.html#lagoon-sectors",
+    "objectID": "index.html#where-to-start",
+    "href": "index.html#where-to-start",
     "title": "Mangrove Structure in Placencia",
+    "section": "Where to start",
+    "text": "Where to start\n\nSector Explorer — start here. Click a lagoon sector on the map to see its species mix, trunk diameter (DBH) and height distributions, and underlying tree-level data.\nSampling Points — a station-by-station view of total biomass sampled in the field.\nField Sampling and Satellite Mapping — background on how the field and mapping data were collected.\nVignettes — short, researcher-contributed explorations of the data."
+  },
+  {
+    "objectID": "field-sampling.html",
+    "href": "field-sampling.html",
+    "title": "Field Sampling",
+    "section": "",
+    "text": "The structural dataset behind this site (Placencia_mangroves_2025.xlsx) is collected by hand in the field, tree by tree, across three lagoon sectors — upper, lower, and main creek — plus a handful of offshore caye sites not yet shown on the Sector Explorer map."
+  },
+  {
+    "objectID": "field-sampling.html#data-source",
+    "href": "field-sampling.html#data-source",
+    "title": "Field Sampling",
+    "section": "Data source",
+    "text": "Data source\nField data are maintained in Placencia_mangroves_2025.xlsx on Google Drive. A local copy is fetched automatically before each site build; you can also download the spreadsheet directly."
+  },
+  {
+    "objectID": "field-sampling.html#whats-recorded-per-tree",
+    "href": "field-sampling.html#whats-recorded-per-tree",
+    "title": "Field Sampling",
+    "section": "What’s recorded per tree",
+    "text": "What’s recorded per tree\nFor each sampled tree, the dataset records:\n\nLocation: a station id and, for the first tree at each station, latitude/longitude.\nSpecies and morphotype (fringe vs. scrub growth form).\nTrunk diameter (DBH) and height.\nLagoon position: upper/lower/main creek sector, and east/west bank.\nAboveground and belowground biomass per tree, calculated from the measurements above.\n\nTrees are grouped by station, with a quarternumber and dist (distance) field indicating multiple trees measured outward from each station’s reference point — consistent with a transect- or quadrant-based sampling design radiating from fixed field stations."
+  },
+  {
+    "objectID": "field-sampling.html#methodology",
+    "href": "field-sampling.html#methodology",
+    "title": "Field Sampling",
+    "section": "Methodology",
+    "text": "Methodology\nThe specific field protocol (plot/transect layout, DBH measurement height, biomass allometric equations used, sampling dates, and personnel) is maintained by the field team and not yet written up here. This section is a placeholder — if you’re on the field team, replace it with the actual methodology, or open an issue/PR against the source repository."
+  },
+  {
+    "objectID": "explorer.html",
+    "href": "explorer.html",
+    "title": "Sector Explorer",
+    "section": "",
+    "text": "Trees were sampled across three lagoon sectors — upper, lower, and main creek — plus a handful of offshore caye sites not yet shown on this map. Click a sector below to see its structure: species mix, trunk diameter (DBH) and height distributions, and the underlying tree-level data. To see biomass by individual field station instead, visit Sampling Points."
+  },
+  {
+    "objectID": "explorer.html#lagoon-sectors",
+    "href": "explorer.html#lagoon-sectors",
+    "title": "Sector Explorer",
     "section": "Lagoon sectors",
-    "text": "Lagoon sectors\nClick a region on the map to view its summary table. The three lagoon sectors are upper, lower, and main creek.\n\n\n\n\nClick a sector polygon to load its data table."
+    "text": "Lagoon sectors\n\n\nCode\ntrees = FileAttachment(\"data/dataset.json\").json()\nsectorSummary = FileAttachment(\"data/sector-summary.json\").json()\nspeciesComposition = FileAttachment(\"data/species-composition.json\").json()\nsectorsGeo = FileAttachment(\"data/placencia-sectors-map.geojson\").json()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCode\nsectorLabels = ({upper: \"Upper\", lower: \"Lower\", \"main creek\": \"Main Creek\"})\nsectorColors = ({upper: \"#2c7bb6\", lower: \"#d7191c\", \"main creek\": \"#1a9641\"})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCode\nmutable selectedSector = null\n\n\n\n\n\n\n\n\n\nCode\n// Defined (and displayed, as the live map container) in this same cell:\n// a separate cell that only *references* mapDiv would show a generic\n// object inspector instead of embedding the live DOM node.\nmapDiv = html`&lt;div id=\"sector-map\"&gt;&lt;/div&gt;`\n\n\n\n\n\n\n\n\n\nCode\nL = require(\"leaflet@1.9.4\")\n\n\n\n\n\n\n\n\n\nCode\nmap = {\n  const m = L.map(mapDiv, { scrollWheelZoom: false }).setView([16.62, -88.34], 12);\n  L.tileLayer(\"https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png\", {\n    attribution: '&copy; &lt;a href=\"https://www.openstreetmap.org/copyright\"&gt;OpenStreetMap&lt;/a&gt;',\n    maxZoom: 19,\n  }).addTo(m);\n  return m;\n}\n\n\n\n\n\n\n\n\n\nCode\n// Sector polygon layer, built once. Hover state is tracked with a plain\n// closure variable (not a reactive `mutable`) so hovering never re-triggers\n// the layer rebuild — only clicks notify the rest of the page, via\n// `mutable selectedSector`.\nsectorGeoLayer = {\n  let activeRegion = null;\n\n  function baseStyle(region) {\n    return {\n      color: \"#555\",\n      fillColor: sectorColors[region] ?? \"#ccc\",\n      weight: 2,\n      fillOpacity: 0.45,\n    };\n  }\n\n  const layer = L.geoJSON(sectorsGeo, {\n    style: (f) =&gt; baseStyle(f.properties.region),\n    onEachFeature: (feature, lyr) =&gt; {\n      const region = feature.properties.region;\n      lyr.bindTooltip(sectorLabels[region] ?? region, { sticky: true, direction: \"top\" });\n      lyr.on({\n        mouseover: (e) =&gt; e.target.setStyle({ weight: 3, fillOpacity: 0.65 }),\n        mouseout: (e) =&gt; {\n          if (activeRegion !== region) e.target.setStyle(baseStyle(region));\n        },\n        click: (e) =&gt; {\n          activeRegion = region;\n          mutable selectedSector = region;\n        },\n      });\n    },\n  });\n  layer.addTo(map);\n  return layer;\n}\n\n\n\n\n\n\n\n\n\nCode\n// Reactive pass: re-applies the \"selected\" emphasis whenever selectedSector\n// changes, without rebuilding the layer.\n{\n  sectorGeoLayer.eachLayer((lyr) =&gt; {\n    const region = lyr.feature.properties.region;\n    const selected = region === selectedSector;\n    lyr.setStyle({\n      weight: selected ? 4 : 2,\n      fillOpacity: selected ? 0.75 : 0.45,\n    });\n  });\n}\n\n\n\n\n\n\n\n\n\nCode\nselectedSummary = sectorSummary.find((d) =&gt; d.sector === selectedSector)\n\n\n\n\n\n\n\n\n\nCode\nselectedSummary\n  ? html`&lt;div class=\"sector-tiles\"&gt;${[\n      [\"Trees sampled\", selectedSummary.n_trees],\n      [\"Stations\", selectedSummary.n_stations],\n      [\"Mean DBH\", `${selectedSummary.mean_dbh_cm.toFixed(1)} cm`],\n      [\"Mean height\", `${selectedSummary.mean_height_m.toFixed(1)} m`],\n      [\"Total biomass (sampled trees)\", `${selectedSummary.total_biomass_kg.toFixed(0)} kg`],\n    ]\n      .map(\n        ([label, value]) =&gt;\n          `&lt;div class=\"tile\"&gt;&lt;div class=\"tile-value\"&gt;${value}&lt;/div&gt;&lt;div class=\"tile-label\"&gt;${label}&lt;/div&gt;&lt;/div&gt;`\n      )\n      .join(\"\")}&lt;/div&gt;`\n  : html`&lt;p class=\"sector-hint\"&gt;Click a sector on the map to see its summary, species mix, and tree-level data.&lt;/p&gt;`\n\n\n\n\n\n\n\n\nSpecies composition\n\n\nCode\nsectorSpecies = speciesComposition.filter((d) =&gt; d.sector === selectedSector)\n\n\n\n\n\n\n\n\n\nCode\nselectedSector == null\n  ? html`&lt;p class=\"sector-hint\"&gt;No sector selected yet.&lt;/p&gt;`\n  : Plot.plot({\n      marginLeft: 160,\n      width: 640,\n      x: { label: \"Trees sampled\" },\n      y: { label: null },\n      marks: [\n        Plot.barX(sectorSpecies, {\n          x: \"n_trees\",\n          y: \"species\",\n          fill: sectorColors[selectedSector] ?? \"#888\",\n          sort: { y: \"-x\" },\n        }),\n      ],\n    })\n\n\n\n\n\n\n\n\n\nStructure: DBH & height distributions\n\n\nCode\nsectorTrees = trees.filter((d) =&gt; d.sector === selectedSector)\n\n\n\n\n\n\n\n\n\nCode\nselectedSector == null\n  ? html`&lt;p class=\"sector-hint\"&gt;No sector selected yet.&lt;/p&gt;`\n  : html`&lt;div class=\"chart-row\"&gt;${[\n      Plot.plot({\n        width: 340,\n        x: { label: \"DBH (cm)\" },\n        y: { label: \"Trees\" },\n        marks: [\n          Plot.rectY(\n            sectorTrees,\n            Plot.binX({ y: \"count\" }, { x: \"dbh_cm\", fill: sectorColors[selectedSector] ?? \"#888\" })\n          ),\n        ],\n      }),\n      Plot.plot({\n        width: 340,\n        x: { label: \"Height (m)\" },\n        y: { label: \"Trees\" },\n        marks: [\n          Plot.rectY(\n            sectorTrees,\n            Plot.binX({ y: \"count\" }, { x: \"height_m\", fill: sectorColors[selectedSector] ?? \"#888\" })\n          ),\n        ],\n      }),\n    ]}&lt;/div&gt;`\n\n\n\n\n\n\n\n\n\nTree-level data\n\n\nCode\nselectedSector == null\n  ? html`&lt;p class=\"sector-hint\"&gt;No sector selected yet.&lt;/p&gt;`\n  : Inputs.table(sectorTrees, {\n      columns: [\"species\", \"morphotype\", \"dbh_cm\", \"height_m\", \"total_biomass_kg\"],\n      header: {\n        species: \"Species\",\n        morphotype: \"Morphotype\",\n        dbh_cm: \"DBH (cm)\",\n        height_m: \"Height (m)\",\n        total_biomass_kg: \"Biomass (kg)\",\n      },\n      sort: \"dbh_cm\",\n      reverse: true,\n      rows: 12,\n    })"
+  },
+  {
+    "objectID": "vignettes.html",
+    "href": "vignettes.html",
+    "title": "Vignettes",
+    "section": "",
+    "text": "Short, self-contained explorations of ideas in the data, contributed by researchers on the project — not full analyses, just a chart or two and a paragraph of interpretation. See the template vignette for the expected format and how to add your own.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTemplate: A Simple Exploration\n\n\nA template vignette — copy this file as a starting point for your own exploration.\n\n\n\n\n\nJan 1, 2026\n\n\nResearcher name\n\n\n\n\n\nNo matching items"
   }
 ]
