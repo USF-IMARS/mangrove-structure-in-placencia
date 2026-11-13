@@ -193,6 +193,18 @@
   text-align: center;
 }
 
+/* Center the compact tree-level table within the wide explorer layout. */
+.tree-table form {
+  padding-left: 14px;
+  padding-right: 14px;
+}
+
+.tree-table form table {
+  width: max-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .footer-logos {
   display: flex;
   flex-wrap: wrap;

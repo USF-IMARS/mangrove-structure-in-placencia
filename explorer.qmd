@@ -358,7 +358,7 @@ speciesImportance = {
 //| echo: false
 selectedSector == null
   ? html`<p class="sector-hint">No sector selected yet.</p>`
-  : Inputs.table(sectorTrees, {
+  : html`<div class="tree-table">${Inputs.table(sectorTrees, {
       columns: ["species", "morphotype", "dbh_cm", "height_m", "total_biomass_kg"],
       header: {
         species: "Species",
@@ -370,5 +370,5 @@ selectedSector == null
       sort: "dbh_cm",
       reverse: true,
       rows: 12,
-    })
+    })}</div>`
 ```
