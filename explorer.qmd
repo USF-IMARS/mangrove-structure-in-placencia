@@ -2,7 +2,7 @@
 title: "Sector Explorer"
 ---
 
-Trees were sampled across three lagoon sectors — **upper**, **lower**, and **main creek** — plus a handful of offshore caye sites not yet shown on this map. Click a sector below to see its structure: species mix, trunk diameter (DBH) and height distributions, and the underlying tree-level data. To see biomass by individual field station instead, visit [Sampling Points](sampling-points.qmd).
+Trees were sampled across three lagoon sectors — **upper**, **lower**, and **main creek** — plus a handful of offshore caye sites not yet shown on this map. Click a sector below to see its structure: species mix, species importance, trunk diameter (DBH) and height distributions, and the underlying tree-level data. To see biomass by individual field station instead, visit [Sampling Points](sampling-points.qmd).
 
 ## Lagoon sectors
 
@@ -18,6 +18,9 @@ sectorsGeo = FileAttachment("data/placencia-sectors-map.geojson").json()
 //| echo: false
 sectorLabels = ({upper: "Upper", lower: "Lower", "main creek": "Main Creek"})
 sectorColors = ({upper: "#2c7bb6", lower: "#d7191c", "main creek": "#1a9641"})
+speciesPalette = ["#1b9e77", "#d95f02", "#7570b3", "#e7298a", "#66a61e", "#e6ab02", "#a6761d"]
+speciesNames = [...new Set(trees.map((d) => d.species))].sort()
+speciesColor = (species) => speciesPalette[speciesNames.indexOf(species) % speciesPalette.length]
 ```
 
 ```{ojs}
@@ -169,6 +172,41 @@ sectorTrees = trees.filter((d) => d.sector === selectedSector)
 
 ```{ojs}
 //| echo: false
+//| output: false
+speciesImportance = {
+  if (selectedSector == null) return [];
+  const sectorTreeRows = trees.filter((d) => d.sector === selectedSector);
+  const stationCount = new Set(sectorTreeRows.map((d) => d.station_id)).size;
+  const totalTrees = sectorTreeRows.length;
+  const totalBasalArea = sectorTreeRows.reduce((sum, d) => sum + d.dbh_cm ** 2, 0);
+
+  const bySpecies = new Map();
+  for (const tree of sectorTreeRows) {
+    const row = bySpecies.get(tree.species) ?? {
+      species: tree.species,
+      n: 0,
+      basalArea: 0,
+      stations: new Set(),
+    };
+    row.n += 1;
+    row.basalArea += tree.dbh_cm ** 2;
+    row.stations.add(tree.station_id);
+    bySpecies.set(tree.species, row);
+  }
+
+  return [...bySpecies.values()]
+    .map((row) => ({
+      species: row.species,
+      dominance: (100 * row.basalArea) / totalBasalArea,
+      frequency: (100 * row.stations.size) / stationCount,
+      density: (100 * row.n) / totalTrees,
+    }))
+    .sort((a, b) => b.dominance - a.dominance);
+}
+```
+
+```{ojs}
+//| echo: false
 {
   const histWidth = width < 720 ? Math.max(280, width - 20) : Math.max(280, (width - 48) / 2);
   return selectedSector == null
@@ -197,6 +235,120 @@ sectorTrees = trees.filter((d) => d.sector === selectedSector)
         ],
       }),
     ]}</div>`;
+}
+```
+
+### Species importance
+
+```{ojs}
+//| echo: false
+{
+  if (selectedSector == null) {
+    return html`<p class="sector-hint">No sector selected yet.</p>`;
+  }
+
+  const size = Math.min(560, Math.max(300, width - 20));
+  const margin = Math.max(52, Math.min(78, size * 0.14));
+  const domain = 1.5;
+  const axes = [
+    { key: "dominance", angle: Math.PI / 2 },
+    { key: "frequency", angle: Math.PI / 2 + (2 * Math.PI) / 3 },
+    { key: "density", angle: Math.PI / 2 + (4 * Math.PI) / 3 },
+  ];
+
+  const pointFor = (row, axis) => {
+    const r = row[axis.key] / 100;
+    return {
+      species: row.species,
+      axis: axis.key,
+      value: row[axis.key],
+      x: r * Math.cos(axis.angle),
+      y: r * Math.sin(axis.angle),
+    };
+  };
+
+  const points = speciesImportance.flatMap((row) => axes.map((axis) => pointFor(row, axis)));
+  const lines = speciesImportance.flatMap((row) => {
+    const rowPoints = axes.map((axis) => pointFor(row, axis));
+    return [...rowPoints, rowPoints[0]];
+  });
+  const grid = [25, 50, 75, 100].flatMap((level) => {
+    const r = level / 100;
+    const ring = axes.map((axis) => ({ level, x: r * Math.cos(axis.angle), y: r * Math.sin(axis.angle) }));
+    return [...ring, ring[0]];
+  });
+  const spokes = axes.flatMap((axis, i) => [
+    { axis: i, x: 0, y: 0 },
+    { axis: i, x: Math.cos(axis.angle), y: Math.sin(axis.angle) },
+  ]);
+  const pxPerUnit = (size - 2 * margin) / (2 * domain);
+  const lineGap = 18 / pxPerUnit;
+  const labels = [
+    { x: 0, y: 1.2, text: "Relative dominance (%)", anchor: "middle" },
+    { x: -0.98, y: -0.56 + lineGap / 2, text: "Relative", anchor: "end" },
+    { x: -0.98, y: -0.56 - lineGap / 2, text: "frequency (%)", anchor: "end" },
+    { x: 0.98, y: -0.56 + lineGap / 2, text: "Relative", anchor: "start" },
+    { x: 0.98, y: -0.56 - lineGap / 2, text: "density (%)", anchor: "start" },
+  ];
+
+  const colorDomain = speciesImportance.map((d) => d.species);
+  const plot = Plot.plot({
+    width: size,
+    height: size,
+    marginTop: margin,
+    marginRight: margin,
+    marginBottom: margin,
+    marginLeft: margin,
+    axis: null,
+    x: { domain: [-domain, domain], axis: null },
+    y: { domain: [-domain, domain], axis: null },
+    color: { domain: colorDomain, range: colorDomain.map((d) => speciesColor(d)) },
+    marks: [
+      Plot.line(grid, { x: "x", y: "y", z: "level", stroke: "#e5e5e5", strokeWidth: 1 }),
+      Plot.line(spokes, { x: "x", y: "y", z: "axis", stroke: "#d8d8d8", strokeWidth: 1 }),
+      Plot.line(lines, { x: "x", y: "y", z: "species", stroke: "species", strokeWidth: 2, strokeOpacity: 0.9 }),
+      Plot.dot(points, { x: "x", y: "y", fill: "species", stroke: "#fff", strokeWidth: 1, r: 3 }),
+      Plot.text(labels.filter((d) => d.anchor === "middle"), {
+        x: "x",
+        y: "y",
+        text: "text",
+        textAnchor: "middle",
+        fontSize: 11,
+        fill: "#444",
+      }),
+      Plot.text(labels.filter((d) => d.anchor === "end"), {
+        x: "x",
+        y: "y",
+        text: "text",
+        textAnchor: "end",
+        fontSize: 11,
+        fill: "#444",
+      }),
+      Plot.text(labels.filter((d) => d.anchor === "start"), {
+        x: "x",
+        y: "y",
+        text: "text",
+        textAnchor: "start",
+        fontSize: 11,
+        fill: "#444",
+      }),
+    ],
+  });
+
+  const legend = speciesImportance
+    .map(
+      (d) =>
+        `<span class="radar-legend-item"><span class="radar-swatch" style="background:${speciesColor(
+          d.species
+        )}"></span>${d.species}</span>`
+    )
+    .join("");
+
+  return html`<div class="radar-block">
+    <div class="radar-plot">${plot}</div>
+    <div class="radar-legend">${legend}</div>
+    <p class="radar-note">All axes are relative (%). Grid rings mark 25%, 50%, 75%, and 100%. Dominance is the share of summed DBH² (basal-area proxy), frequency is the share of stations where the species occurs, and density is the share of trees.</p>
+  </div>`;
 }
 ```
 
