@@ -146,7 +146,7 @@ selectedSector == null
   ? html`<p class="sector-hint">No sector selected yet.</p>`
   : Plot.plot({
       marginLeft: 160,
-      width: 640,
+      width: Math.max(280, width - 20),
       x: { label: "Trees sampled" },
       y: { label: null },
       marks: [
@@ -169,11 +169,13 @@ sectorTrees = trees.filter((d) => d.sector === selectedSector)
 
 ```{ojs}
 //| echo: false
-selectedSector == null
+{
+  const histWidth = width < 720 ? Math.max(280, width - 20) : Math.max(280, (width - 48) / 2);
+  return selectedSector == null
   ? html`<p class="sector-hint">No sector selected yet.</p>`
   : html`<div class="chart-row">${[
       Plot.plot({
-        width: 340,
+        width: histWidth,
         x: { label: "DBH (cm)" },
         y: { label: "Trees" },
         marks: [
@@ -184,7 +186,7 @@ selectedSector == null
         ],
       }),
       Plot.plot({
-        width: 340,
+        width: histWidth,
         x: { label: "Height (m)" },
         y: { label: "Trees" },
         marks: [
@@ -194,7 +196,8 @@ selectedSector == null
           ),
         ],
       }),
-    ]}</div>`
+    ]}</div>`;
+}
 ```
 
 ### Tree-level data

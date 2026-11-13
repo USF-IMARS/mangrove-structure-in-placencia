@@ -1,7 +1,17 @@
 /* css styles */
 
+/* On desktop, keep the content near-full-width but leave a little breathing
+   room on each side (90% of the viewport, centered). */
+@media (min-width: 992px) {
+  #quarto-content.page-layout-full > main.content {
+    width: 90vw;
+    max-width: 90vw;
+    justify-self: center;
+  }
+}
+
 #sector-map {
-  height: 480px;
+  height: clamp(480px, 70vh, 800px);
   width: 100%;
   border: 1px solid #d0d0d0;
   border-radius: 4px;
