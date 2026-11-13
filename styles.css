@@ -24,6 +24,88 @@
   margin: -0.5rem 0 1rem;
 }
 
+/* Species-composition popup shown when a sampling point is clicked. */
+.station-popup-leaflet .leaflet-popup-content {
+  max-width: calc(100vw - 7rem);
+}
+
+.station-popup {
+  font-size: 0.85rem;
+}
+
+.station-popup h4 {
+  margin: 0 0 0.15rem;
+  font-size: 1rem;
+}
+
+.station-popup-meta {
+  color: #666;
+  margin-bottom: 0.35rem;
+}
+
+.station-popup h5 {
+  margin: 0.6rem 0 0.2rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #666;
+}
+
+.station-popup table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0;
+}
+
+.station-popup th,
+.station-popup td {
+  padding: 0.16rem 0.3rem;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+  text-align: left;
+}
+
+.station-popup tr:last-child td {
+  border-bottom: none;
+}
+
+.station-popup .num {
+  text-align: right;
+  white-space: nowrap;
+}
+
+.station-popup .minor td {
+  color: #666;
+}
+
+.station-popup .minor-note {
+  font-size: 0.75rem;
+  font-style: italic;
+}
+
+.station-popup-trees {
+  margin: 0.15rem 0 0;
+  padding-left: 1.15rem;
+}
+
+.station-popup-trees li {
+  margin-bottom: 0.3rem;
+}
+
+.station-popup-trees li:last-child {
+  margin-bottom: 0;
+}
+
+.station-popup-trees .tree-species {
+  display: block;
+  font-weight: 600;
+}
+
+.station-popup-trees .tree-meta {
+  color: #666;
+}
+
 .sector-hint {
   color: #666;
   font-style: italic;

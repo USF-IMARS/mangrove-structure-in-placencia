@@ -2,13 +2,19 @@
 title: "Sampling Points"
 ---
 
-Each bubble marks a field station where trees were measured. Bubble size scales with the total biomass measured at that station; color matches the station's lagoon sector (see the [Sector Explorer](explorer.qmd) for sector-level detail). Hover a bubble for its station id and totals.
+Each bubble marks a field station where trees were measured. Bubble size scales with the total biomass measured at that station; color matches the station's lagoon sector (see the [Sector Explorer](explorer.qmd) for sector-level detail). Click a bubble for its species composition and the individual trees sampled there.
 
 ## Sampling points
 
 ```{ojs}
 //| echo: false
 biomassPoints = FileAttachment("data/biomass-points.json").json()
+```
+
+```{ojs}
+//| echo: false
+//| output: false
+trees = FileAttachment("data/dataset.json").json()
 ```
 
 ```{ojs}
@@ -57,6 +63,76 @@ biomassRadius = (v) => 4 + 14 * Math.sqrt(v / maxBiomassPerPoint)
 ```{ojs}
 //| echo: false
 //| output: false
+stationPopup = (d) => {
+  const stationTrees = trees.filter((t) => t.station_id === d.station_id);
+  const fmt = (v, digits = 1) => (Number.isFinite(v) ? v.toFixed(digits) : "—");
+
+  const counts = {};
+  for (const t of stationTrees) {
+    counts[t.species] = (counts[t.species] ?? 0) + 1;
+  }
+  let speciesRows = Object.entries(counts)
+    .map(([species, n]) => ({ species, n, pct: (100 * n) / stationTrees.length }))
+    .sort((a, b) => b.n - a.n || a.species.localeCompare(b.species));
+
+  // Group single-tree species as "Other" so the dominant species stay readable.
+  // If every species is a singleton, list them individually instead of showing
+  // a single 100% "Other" row.
+  const majors = speciesRows.filter((r) => r.n > 1);
+  const minors = speciesRows.filter((r) => r.n === 1);
+  if (majors.length > 0 && minors.length > 0) {
+    const nMinor = minors.reduce((sum, r) => sum + r.n, 0);
+    speciesRows = [
+      ...majors,
+      {
+        species: "Other (minor species)",
+        note: minors.map((r) => r.species).join(", "),
+        n: nMinor,
+        pct: (100 * nMinor) / stationTrees.length,
+        minor: true,
+      },
+    ];
+  }
+
+  const speciesTable = speciesRows
+    .map(
+      (r) => `
+        <tr${r.minor ? ' class="minor"' : ""}>
+          <td>${r.species}${r.note ? `<div class="minor-note">${r.note}</div>` : ""}</td>
+          <td class="num">${r.pct.toFixed(0)}%</td>
+          <td class="num">${r.n}</td>
+        </tr>`
+    )
+    .join("");
+
+  const treeList = stationTrees
+    .map(
+      (t) => `
+        <li>
+          <span class="tree-species">${t.species}</span>
+          <span class="tree-meta">${t.morphotype} &middot; ${fmt(t.dbh_cm)} cm DBH &middot; ${fmt(t.height_m)} m tall &middot; ${fmt(t.total_biomass_kg)} kg biomass</span>
+        </li>`
+    )
+    .join("");
+
+  return `
+    <div class="station-popup">
+      <h4>${sectorLabels[d.sector] ?? d.sector} &middot; Station ${d.station_id}</h4>
+      <div class="station-popup-meta">${stationTrees.length} trees sampled &middot; ${fmt(d.total_biomass_kg)} kg total biomass</div>
+      <h5>Relative frequency by species</h5>
+      <table>
+        <thead><tr><th>Species</th><th class="num">Frequency</th><th class="num">Trees</th></tr></thead>
+        <tbody>${speciesTable}</tbody>
+      </table>
+      <h5>Trees sampled</h5>
+      <ol class="station-popup-trees">${treeList}</ol>
+    </div>`;
+}
+```
+
+```{ojs}
+//| echo: false
+//| output: false
 pointsLayer = {
   const layer = L.layerGroup(
     biomassPoints.map((d) =>
@@ -66,10 +142,12 @@ pointsLayer = {
         weight: 1,
         fillColor: sectorColors[d.sector] ?? "#888",
         fillOpacity: 0.7,
-      }).bindTooltip(
-        `${sectorLabels[d.sector] ?? d.sector} station ${d.station_id}<br>
-         ${d.n_trees} trees sampled &middot; ${d.total_biomass_kg.toFixed(1)} kg total biomass`
-      )
+      })
+        .bindTooltip(
+          `${sectorLabels[d.sector] ?? d.sector} station ${d.station_id}<br>
+           ${d.n_trees} trees sampled &middot; ${d.total_biomass_kg.toFixed(1)} kg total biomass`
+        )
+        .bindPopup(stationPopup(d), { maxWidth: 520, className: "station-popup-leaflet" })
     )
   );
   layer.addTo(map);
